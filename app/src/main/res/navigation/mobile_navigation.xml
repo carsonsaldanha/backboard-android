@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_scores">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.jrtc.backboard.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_scores"
+        android:name="com.jrtc.backboard.ui.scores.ScoresFragment"
+        android:label="@string/title_scores"
+        tools:layout="@layout/fragment_scores" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.jrtc.backboard.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_news"
+        android:name="com.jrtc.backboard.ui.news.NewsFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_news" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.jrtc.backboard.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.jrtc.backboard.ui.highlights.HighlightsFragment"
+        android:label="@string/title_highlights"
+        tools:layout="@layout/fragment_highlights" />
+
+    <fragment
+        android:id="@+id/navigation_standings"
+        android:name="com.jrtc.backboard.ui.standings.StandingsFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_standings" />
+
 </navigation>

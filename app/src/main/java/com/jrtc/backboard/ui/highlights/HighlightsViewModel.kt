@@ -1,13 +1,13 @@
-package com.jrtc.backboard.ui.home
+package com.jrtc.backboard.ui.highlights
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class HighlightsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is highlights Fragment"
     }
     val text: LiveData<String> = _text
 }
