@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
 
-// This class will deal with the highlights tab of the app.
 class HighlightsFragment : Fragment() {
 
     private var _binding: FragmentHighlightsBinding? = null
