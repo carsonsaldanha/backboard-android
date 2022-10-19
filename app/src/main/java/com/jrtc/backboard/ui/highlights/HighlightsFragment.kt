@@ -18,12 +18,11 @@ class HighlightsFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        val highlightsViewModel =
-                ViewModelProvider(this).get(HighlightsViewModel::class.java)
+        val highlightsViewModel = ViewModelProvider(this).get(HighlightsViewModel::class.java)
 
         _binding = FragmentHighlightsBinding.inflate(inflater, container, false)
         val root: View = binding.root

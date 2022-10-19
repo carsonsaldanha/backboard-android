@@ -18,12 +18,11 @@ class ScoresFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        val scoresViewModel =
-                ViewModelProvider(this).get(ScoresViewModel::class.java)
+        val scoresViewModel = ViewModelProvider(this).get(ScoresViewModel::class.java)
 
         _binding = FragmentScoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
