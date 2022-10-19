@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_news" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_highlights"
         android:name="com.jrtc.backboard.ui.highlights.HighlightsFragment"
         android:label="@string/title_highlights"
         tools:layout="@layout/fragment_highlights" />
