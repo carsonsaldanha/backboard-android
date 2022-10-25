@@ -26,7 +26,7 @@ data class Team (
     val teamName: String,
     val teamCity: String,
     val teamTricode: String,
-    val wins: Long,
-    val losses: Long,
-    val score: Long,
+    val wins: Int,
+    val losses: Int,
+    val score: Int,
 )

@@ -1,10 +1,10 @@
-package com.jrtc.backboard.ui.news
+package com.jrtc.backboard.ui.tweets
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NewsViewModel : ViewModel() {
+class TweetViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is news Fragment"
