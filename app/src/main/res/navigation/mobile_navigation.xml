@@ -3,30 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_scores">
+    app:startDestination="@+id/navigation_games">
 
     <fragment
-        android:id="@+id/navigation_scores"
-        android:name="com.jrtc.backboard.ui.scores.ScoresFragment"
-        android:label="@string/title_scores"
-        tools:layout="@layout/fragment_scores" />
+        android:id="@+id/navigation_games"
+        android:name="com.jrtc.backboard.ui.games.GameListFragment"
+        android:label="@string/title_games"
+        tools:layout="@layout/fragment_games" />
 
     <fragment
-        android:id="@+id/navigation_news"
-        android:name="com.jrtc.backboard.ui.news.NewsFragment"
-        android:label="@string/title_news"
-        tools:layout="@layout/fragment_news" />
+        android:id="@+id/navigation_tweets"
+        android:name="com.jrtc.backboard.ui.tweets.TweetListFragment"
+        android:label="@string/title_tweets"
+        tools:layout="@layout/fragment_tweets" />
 
     <fragment
         android:id="@+id/navigation_highlights"
-        android:name="com.jrtc.backboard.ui.highlights.HighlightsFragment"
+        android:name="com.jrtc.backboard.ui.highlights.HighlightListFragment"
         android:label="@string/title_highlights"
         tools:layout="@layout/fragment_highlights" />
 
     <fragment
         android:id="@+id/navigation_standings"
         android:name="com.jrtc.backboard.ui.standings.StandingsFragment"
-        android:label="@string/title_news"
+        android:label="@string/title_tweets"
         tools:layout="@layout/fragment_standings" />
 
 </navigation>

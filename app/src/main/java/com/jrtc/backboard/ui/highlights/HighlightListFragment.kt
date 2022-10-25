@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
 
-class HighlightsFragment : Fragment() {
+class HighlightListFragment : Fragment() {
 
     private var _binding: FragmentHighlightsBinding? = null
 
@@ -22,13 +22,13 @@ class HighlightsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val highlightsViewModel = ViewModelProvider(this).get(HighlightsViewModel::class.java)
+        val highlightViewModel = ViewModelProvider(this).get(HighlightViewModel::class.java)
 
         _binding = FragmentHighlightsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHighlights
-        highlightsViewModel.text.observe(viewLifecycleOwner) {
+        highlightViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

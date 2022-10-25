@@ -1,4 +1,4 @@
-package com.jrtc.backboard.ui.news
+package com.jrtc.backboard.ui.tweets
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.jrtc.backboard.databinding.FragmentNewsBinding
+import com.jrtc.backboard.databinding.FragmentTweetsBinding
 
-class NewsFragment : Fragment() {
+class TweetListFragment : Fragment() {
 
-    private var _binding: FragmentNewsBinding? = null
+    private var _binding: FragmentTweetsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,13 +22,13 @@ class NewsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val newsViewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
+        val tweetViewModel = ViewModelProvider(this).get(TweetViewModel::class.java)
 
-        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+        _binding = FragmentTweetsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNews
-        newsViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textTweets
+        tweetViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

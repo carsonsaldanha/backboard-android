@@ -2,11 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@drawable/ic_baseline_news_black_24dp"
+        android:drawable="@drawable/ic_baseline_games_black_24dp"
         android:state_checked="true" />
 
     <item
-        android:drawable="@drawable/ic_outline_news_black_24dp"
+        android:drawable="@drawable/ic_outline_games_black_24dp"
         android:state_checked="false" />
 
 </selector>

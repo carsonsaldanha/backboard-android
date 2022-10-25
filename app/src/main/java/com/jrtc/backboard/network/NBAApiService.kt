@@ -22,7 +22,7 @@ private val retrofit = Retrofit.Builder()
 
 interface NBAApiService {
     @GET("scoreboard/todaysScoreboard_00.json")
-    suspend fun getNBAGames(): Call<TodaysGames>
+    fun getNBAGames(): Call<TodaysGames>
 }
 
 object NBAApi {
