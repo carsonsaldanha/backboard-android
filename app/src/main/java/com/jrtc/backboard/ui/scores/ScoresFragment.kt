@@ -27,10 +27,10 @@ class ScoresFragment : Fragment() {
         _binding = FragmentScoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textScores
-        scoresViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textScores
+//        scoresViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
