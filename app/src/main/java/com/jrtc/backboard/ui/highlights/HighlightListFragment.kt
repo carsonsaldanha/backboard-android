@@ -6,36 +6,37 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.jrtc.backboard.databinding.FragmentGamesBinding
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
+import com.jrtc.backboard.ui.games.GameListAdapter
+import com.jrtc.backboard.ui.games.GameListener
+import com.jrtc.backboard.ui.games.GameViewModel
 
 class HighlightListFragment : Fragment() {
 
-    private var _binding: FragmentHighlightsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val viewModel: HighlightViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val highlightViewModel = ViewModelProvider(this).get(HighlightViewModel::class.java)
+        val binding = FragmentGamesBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        // binding.viewModel = viewModel
 
-        _binding = FragmentHighlightsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Calls the view model method that calls the amphibians api
+        viewModel.getNBAHighlightsList()
+        binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
+//            viewModel.onGameClicked(game)
+//            findNavController()
+//                .navigate(R.id.action_amphibianListFragment_to_amphibianDetailFragment)
+        })
 
-        val textView: TextView = binding.textHighlights
-        highlightViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
-    }
+        // Inflate the layout for this fragment
+        return binding.root
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
