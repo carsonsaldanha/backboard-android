@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jrtc.backboard.databinding.HighlightsListItemBinding
 import com.jrtc.backboard.network.Child
-import com.jrtc.backboard.network.ChildData
 
 class HighlightListAdapter(val clickListener: HighlightListener) :
     ListAdapter<Child, HighlightListAdapter.HighlightViewHolder>(DiffCallback) {

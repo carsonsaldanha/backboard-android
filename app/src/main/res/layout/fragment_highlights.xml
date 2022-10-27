@@ -15,15 +15,15 @@
 
         <!-- Sets the listData binding to the list of Highlights from the view model -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/games_recycler_view"
+            android:id="@+id/highlights_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:listData="@{viewModel.children}"
-            tools:listitem="" />
+            app:highlightlistData="@{viewModel.children}"
+            tools:listitem="@layout/highlights_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
