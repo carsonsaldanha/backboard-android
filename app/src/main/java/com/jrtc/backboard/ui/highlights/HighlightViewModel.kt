@@ -13,11 +13,13 @@ import retrofit2.Response
 
 class HighlightViewModel : ViewModel() {
 
-    // The internal MutableLiveData that stores the list of children objects
     private val _children = MutableLiveData<List<Child>>()
 
-    // The external immutable LiveData for the list of children objects
     val children: LiveData<List<Child>> = _children
+
+    private val _child = MutableLiveData<Child>()
+
+    val child: LiveData<Child> = _child
 
 
     fun getNBAHighlightsList() {
@@ -41,6 +43,10 @@ class HighlightViewModel : ViewModel() {
                 Log.v("error", "Failure: ${e.message}")
             }
         }
+    }
+
+    fun onHighlightClicked(child: Child) {
+        _child.value = child
     }
 
 }
