@@ -21,8 +21,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:listData="@{viewModel.tweets}"
-            tools:listitem="@layout/games_list_item" />
+            app:tweetListData="@{viewModel.tweets}"
+            tools:listitem="@layout/tweet_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

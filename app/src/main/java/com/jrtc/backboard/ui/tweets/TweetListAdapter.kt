@@ -6,27 +6,30 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jrtc.backboard.databinding.TweetListItemBinding
-import com.jrtc.backboard.network.ChildData
+import com.jrtc.backboard.network.Child
 
 class TweetListAdapter (val clickListener: TweetListener) :
-    ListAdapter<ChildData, TweetListAdapter.TweetViewHolder>(DiffCallback) {
+    ListAdapter<Child, TweetListAdapter.TweetViewHolder>(DiffCallback) {
 
     class TweetViewHolder (var binding: TweetListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(clickListener: TweetListener, tweet: ChildData) {
-            binding.tweet = tweet
+
+        fun bind(clickListener: TweetListener, tweet: Child) {
+            binding.tweet = tweet.data
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
+
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<ChildData>() {
-        override fun areItemsTheSame(oldItem: ChildData, newItem: ChildData): Boolean {
-            return oldItem.url == newItem.url
+    companion object DiffCallback : DiffUtil.ItemCallback<Child>() {
+
+        override fun areItemsTheSame(oldItem: Child, newItem: Child): Boolean {
+            return oldItem.data.url == newItem.data.url
         }
 
-        override fun areContentsTheSame(oldItem: ChildData, newItem: ChildData): Boolean {
-            return oldItem.title == newItem.title
+        override fun areContentsTheSame(oldItem: Child, newItem: Child): Boolean {
+            return oldItem.data.title == newItem.data.title
         }
     }
 
@@ -44,6 +47,6 @@ class TweetListAdapter (val clickListener: TweetListener) :
 }
 
 
-class TweetListener (val clickListener: (tweet: ChildData) -> Unit){
-    fun onClick(tweet: ChildData) = clickListener(tweet)
+class TweetListener (val clickListener: (tweet: Child) -> Unit){
+    fun onClick(tweet: Child) = clickListener(tweet)
 }
