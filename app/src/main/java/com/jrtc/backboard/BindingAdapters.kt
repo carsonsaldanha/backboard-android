@@ -11,8 +11,8 @@ fun bindGamesRecyclerView(recyclerView: RecyclerView, data: List<Game>?) {
     adapter.submitList(data)
 }
 
-fun getTeamDrawableLogo(teamID: Int): Int {
-    when (teamID) {
+fun getTeamDrawableLogo(teamId: Int): Int {
+    when (teamId) {
         1610612737 -> return R.drawable.logo_1610612737
         1610612738 -> return R.drawable.logo_1610612738
         1610612739 -> return R.drawable.logo_1610612739
