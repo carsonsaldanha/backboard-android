@@ -14,13 +14,19 @@ class GameListAdapter(private val clickListener: GameListener) :
 
     class GameViewHolder(var binding: GamesListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(clickListener: GameListener, game: Game) {
             binding.game = game
             binding.clickListener = clickListener
             binding.awayTeamLogoImageView.setImageResource(getTeamDrawableLogo(game.awayTeam.teamID))
             binding.homeTeamLogoImageView.setImageResource(getTeamDrawableLogo(game.homeTeam.teamID))
+            if (game.gameStatus == 2) {
+                binding.awayTeamScoreTextView.text = game.awayTeam.score.toString()
+                binding.homeTeamScoreTextView.text = game.homeTeam.score.toString()
+            }
             binding.executePendingBindings()
         }
+
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Game>() {
@@ -39,10 +45,7 @@ class GameListAdapter(private val clickListener: GameListener) :
 
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): GameViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return GameViewHolder(
             GamesListItemBinding.inflate(layoutInflater, parent, false)
