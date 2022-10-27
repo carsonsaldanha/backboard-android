@@ -20,10 +20,10 @@ private val retrofit = Retrofit.Builder()
 
 interface RedditApiService {
     @GET("?q=subreddit%3Anba%20site%3Astreamable.com&sort=hot")
-    fun getNBAHighlights(): Call<Data>
+    fun getNBAHighlights(): Call<RedditData>
 
     @GET("?q=subreddit%3Anba%20site%3Atwitter.com&sort=hot")
-    fun getNBATweets(): Call<Data>
+    fun getNBATweets(): Call<RedditData>
 }
 
 object RedditApi {
