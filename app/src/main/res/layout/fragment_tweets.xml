@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -12,17 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Sets the listData binding to the list of Games from the view model -->
+        <!-- Sets the listData binding to the list of tweets from the view model -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tweet_recycler_view"
+            android:id="@+id/tweets_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tweetListData="@{viewModel.tweets}"
-            tools:listitem="@layout/tweet_list_item" />
+            app:tweetsListData="@{viewModel.tweets}"
+            tools:listitem="@layout/tweets_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

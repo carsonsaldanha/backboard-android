@@ -1,6 +1,5 @@
 package com.jrtc.backboard.ui.games
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,45 +12,48 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * The [ViewModel] that is attached to the [GameViewModel].
+ */
 class GameViewModel : ViewModel() {
 
-    // The internal MutableLiveData that stores the list of games objects
+    // The internal MutableLiveData that stores the list of games
     private val _games = MutableLiveData<List<Game>>()
 
-    // The external immutable LiveData for the list of games objects
+    // The external immutable LiveData for the list of games
     val games: LiveData<List<Game>> = _games
 
-    // The internal MutableLiveData that stores a single game object
-    // Used to display the details of an game when a list item is clicked
+    // The internal MutableLiveData that stores a single game
     private val _game = MutableLiveData<Game>()
 
-    // The external immutable LiveData for a single game object
-    // Used to display the details of an game when a list item is clicked
+    // The external immutable LiveData for a single game
     val game: LiveData<Game> = _game
 
-    fun getNBAGamesList() {
+    /**
+     * Gets NBA games information from the NBA api Retrofit service and updates the
+     * [Game] [List] [LiveData].
+     */
+    fun getGamesList() {
         viewModelScope.launch {
-            try {
-                val response = NBAApi.retrofitService.getNBAGames()
-                response.enqueue(object : Callback<TodaysGames> {
-                    override fun onResponse(
-                        call: Call<TodaysGames>,
-                        response: Response<TodaysGames>
-                    ) {
-                        _games.value = response.body()?.scoreboard?.games
-                    }
+            val response = NBAApi.retrofitService.getGames()
+            // Parses the nested JSON object
+            response.enqueue(object : Callback<TodaysGames> {
+                override fun onResponse(call: Call<TodaysGames>, response: Response<TodaysGames>) {
+                    _games.value = response.body()?.scoreboard?.games
+                }
 
-                    override fun onFailure(call: Call<TodaysGames>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-                })
-            } catch (e: Exception) {
-                _games.value = listOf()
-                Log.v("error", "Failure: ${e.message}")
-            }
+                override fun onFailure(call: Call<TodaysGames>, t: Throwable) {
+                    _games.value = listOf()
+                    t.printStackTrace()
+                }
+            })
         }
     }
 
+    /**
+     * Sets [Game] [LiveData] to the passed in game to display the details of a game when a list
+     * item is clicked.
+     */
     fun onGameClicked(game: Game) {
         _game.value = game
     }

@@ -6,46 +6,48 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jrtc.backboard.databinding.HighlightsListItemBinding
-import com.jrtc.backboard.network.Child
+import com.jrtc.backboard.network.Post
 
-class HighlightListAdapter(val clickListener: HighlightListener) :
-    ListAdapter<Child, HighlightListAdapter.HighlightViewHolder>(DiffCallback) {
+/**
+ * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
+ * data, including computing diffs between lists.
+ */
+class HighlightListAdapter(private val clickListener: HighlightListener) :
+    ListAdapter<Post, HighlightListAdapter.HighlightViewHolder>(DiffCallback) {
 
     class HighlightViewHolder(var binding: HighlightsListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(clickListener: HighlightListener, child: Child) {
-            binding.child = child
+
+        fun bind(clickListener: HighlightListener, highlight: Post) {
+            binding.highlight = highlight.data
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<Child>() {
-
-        override fun areItemsTheSame(oldItem: Child, newItem: Child): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<Post>() {
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem.data.url == newItem.data.url
         }
 
-        override fun areContentsTheSame(oldItem: Child, newItem: Child): Boolean {
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem.data.title == newItem.data.title
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HighlightViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return HighlightViewHolder(
-            HighlightsListItemBinding.inflate(layoutInflater, parent, false)
-        )
+        return HighlightViewHolder(HighlightsListItemBinding.inflate(layoutInflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: HighlightViewHolder, position: Int) {
-        val child = getItem(position)
-        holder.bind(clickListener, child)
+        val highlight = getItem(position)
+        holder.bind(clickListener, highlight)
     }
+
 }
 
-class HighlightListener(val clickListener: (child: Child) -> Unit) {
-    fun onClick(child: Child) = clickListener(child)
+class HighlightListener(val clickListener: (highlight: Post) -> Unit) {
+    fun onClick(highlight: Post) = clickListener(highlight)
 }

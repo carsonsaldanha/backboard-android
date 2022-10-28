@@ -21,16 +21,14 @@ class HighlightListFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        // Calls the view model method that calls the amphibians api
-        viewModel.getNBAHighlightsList()
-        binding.highlightsRecyclerView.adapter = HighlightListAdapter(HighlightListener { child ->
-            viewModel.onHighlightClicked(child)
-//            findNavController()
-//                .navigate(R.id.action_amphibianListFragment_to_amphibianDetailFragment)
+        // Calls the view model method that calls the Reddit api
+        viewModel.getHighlightsList()
+        binding.highlightsRecyclerView.adapter = HighlightListAdapter(HighlightListener { highlight ->
+            viewModel.onHighlightClicked(highlight)
         })
 
-        // Inflate the layout for this fragment
+        // Inflates the layout for this fragment
         return binding.root
-
     }
+
 }

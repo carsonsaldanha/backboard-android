@@ -13,16 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Sets the gamesListData binding to the list of Games from the view model -->
+        <!-- Sets the gamesListData binding to the list of games from the view model -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/games_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            app:gamesListData="@{viewModel.games}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:gamesListData="@{viewModel.games}"
             tools:listitem="@layout/games_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

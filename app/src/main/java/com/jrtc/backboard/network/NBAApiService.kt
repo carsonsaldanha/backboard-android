@@ -20,11 +20,22 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+/**
+ * A public interface that exposes the [getGames] method.
+ */
 interface NBAApiService {
+    /**
+     * Returns a [Call] of [TodaysGames] and this method can be called from a Coroutine.
+     * The @GET annotation indicates that the specified endpoint will be requested with the GET
+     * HTTP method.
+     */
     @GET("scoreboard/todaysScoreboard_00.json")
-    fun getNBAGames(): Call<TodaysGames>
+    fun getGames(): Call<TodaysGames>
 }
 
+/**
+ * A public NBA Api object that exposes the lazy-initialized Retrofit service
+ */
 object NBAApi {
     val retrofitService: NBAApiService by lazy { retrofit.create(NBAApiService::class.java) }
 }

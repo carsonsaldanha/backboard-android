@@ -21,10 +21,14 @@ class TweetListFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        viewModel.getListOfTweets()
-        binding.tweetRecyclerView.adapter = TweetListAdapter(TweetListener { tweet ->
+        // Calls the view model method that calls the Reddit api
+        viewModel.getTweetsList()
+        binding.tweetsRecyclerView.adapter = TweetListAdapter(TweetListener { tweet ->
             viewModel.onTweetClicked(tweet)
         })
+
+        // Inflates the layout for this fragment
         return binding.root
     }
+
 }

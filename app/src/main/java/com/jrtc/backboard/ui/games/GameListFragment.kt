@@ -22,16 +22,13 @@ class GameListFragment : Fragment() {
         binding.viewModel = viewModel
 
         // Calls the view model method that calls the NBA api
-        viewModel.getNBAGamesList()
+        viewModel.getGamesList()
         binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
             viewModel.onGameClicked(game)
-//            findNavController()
-//                .navigate(R.id.action_amphibianListFragment_to_amphibianDetailFragment)
         })
 
-        // Inflate the layout for this fragment
+        // Inflates the layout for this fragment
         return binding.root
-
     }
 
 }
