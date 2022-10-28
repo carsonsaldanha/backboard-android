@@ -15,34 +15,109 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/game_card"
+        style="?attr/materialCardViewElevatedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:onClick="@{() -> clickListener.onClick(game)}"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="4dp">
+        android:onClick="@{() -> clickListener.onClick(game)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/away_team_logo_image_view"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="@{game.awayTeam.teamName}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/logo_1610612745" />
+
+            <ImageView
+                android:id="@+id/home_team_logo_image_view"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="@{game.homeTeam.teamName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/logo_1610612755" />
 
             <TextView
-                android:id="@+id/away_team_text_view"
+                android:id="@+id/away_team_name_text_view"
+                style="?attr/textAppearanceLabelLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{game.awayTeam.teamTricode}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/away_team_logo_image_view"
+                app:layout_constraintStart_toStartOf="@id/away_team_logo_image_view"
+                app:layout_constraintTop_toBottomOf="@id/away_team_logo_image_view"
                 tools:text="HOU" />
 
             <TextView
-                android:id="@+id/home_team_text_view"
+                android:id="@+id/home_team_name_text_view"
+                style="?attr/textAppearanceLabelLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{game.homeTeam.teamTricode}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/home_team_logo_image_view"
+                app:layout_constraintStart_toStartOf="@id/home_team_logo_image_view"
+                app:layout_constraintTop_toBottomOf="@id/home_team_logo_image_view"
                 tools:text="PHI" />
+
+            <TextView
+                android:id="@+id/away_team_record_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@{`(` + game.awayTeam.wins + `-` + game.awayTeam.losses + `)`}"
+                app:layout_constraintStart_toEndOf="@id/away_team_name_text_view"
+                app:layout_constraintTop_toTopOf="@id/away_team_name_text_view"
+                tools:text="(6-3)" />
+
+            <TextView
+                android:id="@+id/home_team_record_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="@{`(` + game.homeTeam.wins + `-` + game.homeTeam.losses + `)`}"
+                app:layout_constraintEnd_toStartOf="@id/home_team_name_text_view"
+                app:layout_constraintTop_toTopOf="@id/home_team_name_text_view"
+                tools:text="(8-3)" />
+
+            <TextView
+                android:id="@+id/game_status_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{game.gameStatusText}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/home_team_logo_image_view"
+                app:layout_constraintStart_toEndOf="@id/away_team_logo_image_view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="8:00 pm ET" />
+
+            <TextView
+                android:id="@+id/away_team_score_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/game_status_text_view"
+                app:layout_constraintStart_toEndOf="@id/away_team_logo_image_view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="45" />
+
+            <TextView
+                android:id="@+id/home_team_score_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/home_team_logo_image_view"
+                app:layout_constraintStart_toEndOf="@id/game_status_text_view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="52" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
