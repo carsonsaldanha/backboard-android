@@ -4,38 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
 
 class HighlightListFragment : Fragment() {
 
-    private var _binding: FragmentHighlightsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val viewModel: HighlightViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val highlightViewModel = ViewModelProvider(this).get(HighlightViewModel::class.java)
+        val binding = FragmentHighlightsBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-        _binding = FragmentHighlightsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Calls the view model method that calls the amphibians api
+        viewModel.getNBAHighlightsList()
+        binding.highlightsRecyclerView.adapter = HighlightListAdapter(HighlightListener { child ->
+            viewModel.onHighlightClicked(child)
+//            findNavController()
+//                .navigate(R.id.action_amphibianListFragment_to_amphibianDetailFragment)
+        })
 
-        val textView: TextView = binding.textHighlights
-        highlightViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
-    }
+        // Inflate the layout for this fragment
+        return binding.root
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
