@@ -21,7 +21,7 @@ class GameListFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        // Calls the view model method that calls the amphibians api
+        // Calls the view model method that calls the NBA api
         viewModel.getNBAGamesList()
         binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
             viewModel.onGameClicked(game)
