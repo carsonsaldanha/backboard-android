@@ -19,10 +19,4 @@
         android:icon="@drawable/ic_selector_highlights"
         android:title="@string/title_highlights" />
 
-    <item
-        android:id="@+id/navigation_standings"
-        android:enabled="true"
-        android:icon="@drawable/ic_selector_standings"
-        android:title="@string/title_standings" />
-
 </menu>

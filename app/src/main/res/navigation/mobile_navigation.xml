@@ -23,10 +23,4 @@
         android:label="@string/title_highlights"
         tools:layout="@layout/fragment_highlights" />
 
-    <fragment
-        android:id="@+id/navigation_standings"
-        android:name="com.jrtc.backboard.ui.standings.StandingsFragment"
-        android:label="@string/title_tweets"
-        tools:layout="@layout/fragment_standings" />
-
 </navigation>
