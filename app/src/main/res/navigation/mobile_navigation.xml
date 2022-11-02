@@ -9,7 +9,16 @@
         android:id="@+id/navigation_games"
         android:name="com.jrtc.backboard.ui.games.GameListFragment"
         android:label="@string/title_games"
-        tools:layout="@layout/fragment_games" />
+        tools:layout="@layout/fragment_games">
+
+        <action
+            android:id="@+id/action_navigation_games_to_navigation_boxscore"
+            app:destination="@id/navigation_boxscore" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_boxscore" />
 
     <fragment
         android:id="@+id/navigation_tweets"
