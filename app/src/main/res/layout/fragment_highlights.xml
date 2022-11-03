@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Sets the listData binding to the list of highlights from the view model -->
+        <!-- Sets the highlightsListData binding to the list of highlights from the view model -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/highlights_recycler_view"
             android:layout_width="match_parent"

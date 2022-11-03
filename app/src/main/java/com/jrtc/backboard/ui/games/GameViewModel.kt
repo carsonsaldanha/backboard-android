@@ -1,6 +1,5 @@
 package com.jrtc.backboard.ui.games
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -59,7 +58,6 @@ class GameViewModel : ViewModel() {
             response.enqueue(object : Callback<Boxscore> {
                 override fun onResponse(call: Call<Boxscore>, response: Response<Boxscore>) {
                     _game.value = response.body()?.game
-                    Log.v("PLAYER", _game.value!!.homeTeam.players!![0].nameI)
                 }
 
                 override fun onFailure(call: Call<Boxscore>, t: Throwable) {

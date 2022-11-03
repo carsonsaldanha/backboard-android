@@ -21,12 +21,6 @@ class BoxscoreFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        // Calls the view model method that calls the NBA api
-//        viewModel.getGamesList()
-//        binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
-//            viewModel.onGameClicked(game)
-//        })
-
         // Inflates the layout for this fragment
         return binding.root
     }

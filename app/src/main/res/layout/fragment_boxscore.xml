@@ -10,9 +10,11 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@+id/boxscore_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:boxscoreData="@{viewModel.game.awayTeam.players}">
 
         <TableLayout
             android:id="@+id/fixed_player_table_layout"
