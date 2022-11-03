@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 private const val BASE_URL = "https://cdn.nba.com/static/json/liveData/"
 
@@ -31,6 +32,9 @@ interface NBAApiService {
      */
     @GET("scoreboard/todaysScoreboard_00.json")
     fun getGames(): Call<TodaysGames>
+
+    @GET("boxscore/boxscore_{gameId}.json")
+    fun getBoxscore(@Path("gameId") gameId: String): Call<Boxscore>
 }
 
 /**

@@ -10,6 +10,10 @@ data class TodaysGames(
     val scoreboard: Scoreboard
 )
 
+data class Boxscore(
+    val game: Game
+)
+
 /**
  * This data class defines [Scoreboard] which includes the list of games.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
@@ -42,10 +46,10 @@ data class Team(
     val teamName: String,
     val teamCity: String,
     val teamTricode: String,
-    val wins: Int,
-    val losses: Int,
+    val wins: Int?,
+    val losses: Int?,
     val score: Int,
-    val players: Player
+    val players: List<Player>?
 )
 
 data class Player(

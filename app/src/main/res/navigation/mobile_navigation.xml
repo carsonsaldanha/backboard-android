@@ -18,7 +18,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_boxscore" />
+        android:id="@+id/navigation_boxscore"
+        android:name="com.jrtc.backboard.ui.games.BoxscoreFragment"
+        android:label="Boxscore"
+        tools:layout="@layout/fragment_boxscore" />
 
     <fragment
         android:id="@+id/navigation_tweets"

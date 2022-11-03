@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.jrtc.backboard.R
-import com.jrtc.backboard.databinding.FragmentGamesBinding
+import com.jrtc.backboard.databinding.FragmentBoxscoreBinding
 
-class GameListFragment : Fragment() {
+class BoxscoreFragment : Fragment() {
 
     private val viewModel: GameViewModel by activityViewModels()
 
@@ -19,16 +17,15 @@ class GameListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentGamesBinding.inflate(inflater)
+        val binding = FragmentBoxscoreBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         // Calls the view model method that calls the NBA api
-        viewModel.getGamesList()
-        binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
-            viewModel.onGameClicked(game)
-            findNavController().navigate(R.id.action_navigation_games_to_navigation_boxscore)
-        })
+//        viewModel.getGamesList()
+//        binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
+//            viewModel.onGameClicked(game)
+//        })
 
         // Inflates the layout for this fragment
         return binding.root

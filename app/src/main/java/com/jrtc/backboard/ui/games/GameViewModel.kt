@@ -1,9 +1,11 @@
 package com.jrtc.backboard.ui.games
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jrtc.backboard.network.Boxscore
 import com.jrtc.backboard.network.Game
 import com.jrtc.backboard.network.NBAApi
 import com.jrtc.backboard.network.TodaysGames
@@ -50,12 +52,30 @@ class GameViewModel : ViewModel() {
         }
     }
 
+    private fun getBoxscore() {
+        viewModelScope.launch {
+            val response = NBAApi.retrofitService.getBoxscore(_game.value!!.gameId)
+            // Parses the nested JSON object
+            response.enqueue(object : Callback<Boxscore> {
+                override fun onResponse(call: Call<Boxscore>, response: Response<Boxscore>) {
+                    _game.value = response.body()?.game
+                    Log.v("PLAYER", _game.value!!.homeTeam.players!![0].nameI)
+                }
+
+                override fun onFailure(call: Call<Boxscore>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+        }
+    }
+
     /**
      * Sets [Game] [LiveData] to the passed in game to display the details of a game when a list
      * item is clicked.
      */
     fun onGameClicked(game: Game) {
         _game.value = game
+        getBoxscore()
     }
 
 }
