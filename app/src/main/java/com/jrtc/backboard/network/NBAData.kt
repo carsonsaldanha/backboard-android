@@ -61,6 +61,7 @@ data class Player(
 data class Statistics(
     val assists: Int,
     val blocks: Int,
+    val blocksReceived: Int,
     val fieldGoalsAttempted: Int,
     val fieldGoalsMade: Int,
     val fieldGoalsPercentage: Double,

@@ -24,13 +24,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
-        navView.setupWithNavController(navController)
+        bottomNavigationView.setupWithNavController(navController)
 
         // Edge to edge content and margin insets
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = insets.top
-                bottomMargin = navView.height
+                bottomMargin = bottomNavigationView.height
             }
             WindowInsetsCompat.CONSUMED
         }

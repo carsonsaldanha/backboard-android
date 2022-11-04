@@ -5,4 +5,26 @@
     <string name="title_tweets">Tweets</string>
     <string name="title_highlights">Highlights</string>
     <string name="title_standings">Standings</string>
+    <string name="table_player">Player</string>
+    <string name="table_min">MIN</string>
+    <string name="table_pts">PTS</string>
+    <string name="table_reb">REB</string>
+    <string name="table_ast">AST</string>
+    <string name="table_stl">STL</string>
+    <string name="table_blk">BLK</string>
+    <string name="table_br">BR</string>
+    <string name="table_oreb">OREB</string>
+    <string name="table_dreb">DREB</string>
+    <string name="table_fgm">FGM</string>
+    <string name="table_fga">FGA</string>
+    <string name="table_fg_per">FG%</string>
+    <string name="table_3pm">3PM</string>
+    <string name="table_3pa">3PA</string>
+    <string name="table_3p_per">3P%</string>
+    <string name="table_ftm">FTM</string>
+    <string name="table_fta">FTA</string>
+    <string name="table_ft_per">FT%</string>
+    <string name="table_pf">PF</string>
+    <string name="table_to">TO</string>
+    <string name="table_pm">+/-</string>
 </resources>
