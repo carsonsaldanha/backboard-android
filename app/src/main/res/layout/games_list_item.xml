@@ -99,9 +99,9 @@
 
             <TextView
                 android:id="@+id/away_team_score_text_view"
+                style="?attr/textAppearanceBody1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/game_status_text_view"
                 app:layout_constraintStart_toEndOf="@id/away_team_logo_image_view"
@@ -110,9 +110,9 @@
 
             <TextView
                 android:id="@+id/home_team_score_text_view"
+                style="?attr/textAppearanceBody1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/home_team_logo_image_view"
                 app:layout_constraintStart_toEndOf="@id/game_status_text_view"
