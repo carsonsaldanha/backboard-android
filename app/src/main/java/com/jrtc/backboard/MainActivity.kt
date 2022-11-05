@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.elevation.SurfaceColors
 import com.jrtc.backboard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,24 +25,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
-
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        navController = navHostFragment.navController
-
-        bottomNavigationView.setupWithNavController(navController)
-
         // Edge to edge content and margin insets
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragmentActivityMain) { view, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = insets.top
-                bottomMargin = bottomNavigationView.height
+                bottomMargin = insets.bottom
             }
             WindowInsetsCompat.CONSUMED
         }
+        window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(this)
+
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        navController = navHostFragment.navController
+        bottomNavigationView.setupWithNavController(navController)
     }
 
 }
