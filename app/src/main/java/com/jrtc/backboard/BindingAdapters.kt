@@ -1,7 +1,5 @@
 package com.jrtc.backboard
 
-import android.content.Context
-import android.util.DisplayMetrics
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TableLayout
@@ -45,12 +43,24 @@ fun bindHighlightRecyclerView(recyclerView: RecyclerView, data: List<Post>?) {
     adapter.submitList(data)
 }
 
-@BindingAdapter("boxscoreData")
-fun bindBoxscoreStats(constraintLayout: ConstraintLayout, players: List<Player>?) {
-    val tableFixed = constraintLayout.findViewById<TableLayout>(R.id.fixed_player_table_layout)
+@BindingAdapter(value = ["boxscoreData", "teamType"], requireAll = true)
+fun bindBoxscoreStats(
+    constraintLayout: ConstraintLayout,
+    players: List<Player>?,
+    isAwayTeam: Boolean
+) {
+    val tableFixed =
+        if (isAwayTeam)
+            constraintLayout.findViewById<TableLayout>(R.id.away_team_fixed_player_table_layout)
+        else
+            constraintLayout.findViewById(R.id.home_team_fixed_player_table_layout)
     if (tableFixed.childCount == 1) {
         val tableScroll =
-            constraintLayout.findViewById<TableLayout>(R.id.scrollable_stats_table_layout)
+            if (isAwayTeam)
+                constraintLayout.findViewById<TableLayout>(R.id.away_team_scrollable_stats_table_layout)
+            else
+                constraintLayout.findViewById(R.id.home_team_scrollable_stats_table_layout)
+
         players?.forEach() {
             val fixedRow = TableRow(tableFixed.context)
             val scrollRow = TableRow(tableScroll.context)
@@ -66,14 +76,25 @@ fun bindBoxscoreStats(constraintLayout: ConstraintLayout, players: List<Player>?
             (playerName.layoutParams as LinearLayout.LayoutParams).setMargins(
                 0,
                 0,
-                convertPixelsToDp(8, tableFixed.context),
-                0
+                12,
+                12
             )
             linearLayout.addView(playerName)
 
             val minutes = MaterialTextView(fixedRow.context)
             // Extracts the minutes digit value from the field
             minutes.text = it.statistics.minutesCalculated.filter(Char::isDigit).toInt().toString()
+            // Sets the bottom margin for the entire row
+            minutes.layoutParams = TableRow.LayoutParams(
+                TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT
+            )
+            (minutes.layoutParams as TableRow.LayoutParams).setMargins(
+                0,
+                0,
+                0,
+                12
+            )
             val points = MaterialTextView(fixedRow.context)
             points.text = it.statistics.points.toString()
             val rebounds = MaterialTextView(fixedRow.context)
@@ -150,10 +171,6 @@ fun bindBoxscoreStats(constraintLayout: ConstraintLayout, players: List<Player>?
             tableScroll.addView(scrollRow)
         }
     }
-}
-
-private fun convertPixelsToDp(px: Int, context: Context): Int {
-    return px * (context.resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)
 }
 
 private fun convertDecimalToPercent(attempted: Int, decimal: Double): String {
