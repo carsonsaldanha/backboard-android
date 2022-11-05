@@ -1,6 +1,5 @@
 package com.jrtc.backboard
 
-import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TableRow
@@ -65,7 +64,6 @@ fun bindBoxscoreStats(
             val fixedRow = TableRow(tableFixed.context)
             val scrollRow = TableRow(tableScroll.context)
             val linearLayout = LinearLayout(tableFixed.context)
-            linearLayout.gravity = Gravity.CENTER_VERTICAL
 
             val playerName = MaterialTextView(linearLayout.context)
             playerName.text = it.nameI

@@ -9,430 +9,436 @@
             type="com.jrtc.backboard.ui.games.GameViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <!-- Away team box score layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/away_team_boxscore_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:boxscoreData="@{viewModel.game.awayTeam.players}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:teamType="@{true}">
+            android:layout_height="wrap_content">
 
-            <TableLayout
-                android:id="@+id/away_team_fixed_player_table_layout"
-                android:layout_width="100dp"
+            <!-- Away team box score layout -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/away_team_boxscore_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
+                app:boxscoreData="@{viewModel.game.awayTeam.players}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="@string/table_player"
-                    android:textAppearance="?attr/textAppearanceOverline"
-                    android:textStyle="bold" />
-
-            </TableLayout>
-
-            <HorizontalScrollView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fadingEdgeLength="40dp"
-                android:fillViewport="true"
-                android:requiresFadingEdge="horizontal"
-                android:scrollbars="horizontal"
-                app:layout_constraintLeft_toRightOf="@id/away_team_fixed_player_table_layout"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:teamType="@{true}">
 
                 <TableLayout
-                    android:id="@+id/away_team_scrollable_stats_table_layout"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/away_team_fixed_player_table_layout"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TableRow
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        tools:ignore="UselessParent">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_min"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_pts"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_reb"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/table_ast"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_stl"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/table_blk"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_br"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_oreb"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_dreb"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fgm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fga"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fg_per"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_3pm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_3pa"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/table_3p_per"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_ftm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fta"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_ft_per"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_pf"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_to"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_pm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                    </TableRow>
+                        android:text="@string/table_player"
+                        android:textAppearance="?attr/textAppearanceOverline"
+                        android:textStyle="bold" />
 
                 </TableLayout>
 
-            </HorizontalScrollView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Home team box score layout -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/home_team_boxscore_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:boxscoreData="@{viewModel.game.homeTeam.players}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/away_team_boxscore_layout"
-            app:teamType="@{false}">
-
-            <TableLayout
-                android:id="@+id/home_team_fixed_player_table_layout"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="@string/table_player"
-                    android:textAppearance="?attr/textAppearanceOverline"
-                    android:textStyle="bold" />
+                    android:fadingEdgeLength="40dp"
+                    android:fillViewport="true"
+                    android:requiresFadingEdge="horizontal"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintLeft_toRightOf="@id/away_team_fixed_player_table_layout"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </TableLayout>
+                    <TableLayout
+                        android:id="@+id/away_team_scrollable_stats_table_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-            <HorizontalScrollView
-                android:layout_width="0dp"
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            tools:ignore="UselessParent">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_min"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_pts"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_reb"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/table_ast"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_stl"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/table_blk"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_br"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_oreb"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_dreb"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fgm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fga"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fg_per"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_3pm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_3pa"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/table_3p_per"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_ftm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fta"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_ft_per"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_pf"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_to"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_pm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                        </TableRow>
+
+                    </TableLayout>
+
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Home team box score layout -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/home_team_boxscore_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fadingEdgeLength="40dp"
-                android:fillViewport="true"
-                android:requiresFadingEdge="horizontal"
-                android:scrollbars="horizontal"
-                app:layout_constraintLeft_toRightOf="@id/home_team_fixed_player_table_layout"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:padding="16dp"
+                app:boxscoreData="@{viewModel.game.homeTeam.players}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/away_team_boxscore_layout"
+                app:teamType="@{false}">
 
                 <TableLayout
-                    android:id="@+id/home_team_scrollable_stats_table_layout"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/home_team_fixed_player_table_layout"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TableRow
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        tools:ignore="UselessParent">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_min"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_pts"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_reb"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/table_ast"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_stl"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/table_blk"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_br"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_oreb"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_dreb"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fgm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fga"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fg_per"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_3pm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_3pa"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/table_3p_per"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_ftm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_fta"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_ft_per"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_pf"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_to"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="38dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table_pm"
-                            android:textAppearance="?attr/textAppearanceOverline"
-                            android:textStyle="bold" />
-
-                    </TableRow>
+                        android:text="@string/table_player"
+                        android:textAppearance="?attr/textAppearanceOverline"
+                        android:textStyle="bold" />
 
                 </TableLayout>
 
-            </HorizontalScrollView>
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fadingEdgeLength="40dp"
+                    android:fillViewport="true"
+                    android:requiresFadingEdge="horizontal"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintLeft_toRightOf="@id/home_team_fixed_player_table_layout"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TableLayout
+                        android:id="@+id/home_team_scrollable_stats_table_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            tools:ignore="UselessParent">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_min"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_pts"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_reb"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/table_ast"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_stl"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/table_blk"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_br"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_oreb"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_dreb"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fgm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fga"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fg_per"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_3pm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_3pa"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/table_3p_per"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_ftm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_fta"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_ft_per"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_pf"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_to"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="38dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/table_pm"
+                                android:textAppearance="?attr/textAppearanceOverline"
+                                android:textStyle="bold" />
+
+                        </TableRow>
+
+                    </TableLayout>
+
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </layout>
