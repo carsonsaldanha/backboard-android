@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentGamesBinding
 
 class GameListFragment : Fragment() {
@@ -25,6 +27,10 @@ class GameListFragment : Fragment() {
         viewModel.getGamesList()
         binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
             viewModel.onGameClicked(game)
+            // Only displays the boxscore if the game has started or finished
+            if (game.gameStatus != 1) {
+                findNavController().navigate(R.id.action_navigation_games_to_navigation_boxscore)
+            }
         })
 
         // Inflates the layout for this fragment

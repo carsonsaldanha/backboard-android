@@ -1,6 +1,7 @@
 package com.jrtc.backboard
 
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -8,6 +9,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,24 +26,30 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
-
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        navController = navHostFragment.navController
-
-        navView.setupWithNavController(navController)
-
         // Edge to edge content and margin insets
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragmentActivityMain) { view, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = insets.top
-                bottomMargin = navView.height
             }
-            WindowInsetsCompat.CONSUMED
+            WindowInsetsCompat.toWindowInsetsCompat(binding.root.rootWindowInsets)
         }
+
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        navController = navHostFragment.navController
+        // Hides the bottom navigation bar on unspecified fragments
+        navController.addOnDestinationChangedListener { _, navDest: NavDestination, _ ->
+            if (navDest.id == R.id.navigation_games || navDest.id == R.id.navigation_tweets
+                || navDest.id == R.id.navigation_highlights) {
+                bottomNavigationView.visibility = View.VISIBLE
+            } else {
+                bottomNavigationView.visibility = View.GONE
+            }
+        }
+        bottomNavigationView.setupWithNavController(navController)
     }
 
 }
