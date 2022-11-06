@@ -23,9 +23,7 @@ class HighlightListFragment : Fragment() {
 
         // Calls the view model method that calls the Reddit api
         viewModel.getHighlightsList()
-        binding.highlightsRecyclerView.adapter = HighlightListAdapter(HighlightListener { highlight ->
-            viewModel.onHighlightClicked(highlight)
-        })
+        binding.highlightsRecyclerView.adapter = HighlightListAdapter()
 
         // Inflates the layout for this fragment
         return binding.root

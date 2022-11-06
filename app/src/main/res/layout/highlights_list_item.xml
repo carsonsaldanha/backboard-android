@@ -7,19 +7,11 @@
         <variable
             name="highlight"
             type="com.jrtc.backboard.network.PostData" />
-
-        <variable
-            name="clickListener"
-            type="com.jrtc.backboard.ui.highlights.HighlightListener" />
     </data>
 
-    <TextView
-        android:id="@+id/highlight_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{highlight.title}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Highlight Title" />
+    <WebView
+        android:id="@+id/highlight_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </layout>

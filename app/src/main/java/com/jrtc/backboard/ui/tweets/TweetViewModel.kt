@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jrtc.backboard.network.Post
 import com.jrtc.backboard.network.RedditApi
-import com.jrtc.backboard.network.RedditData
+import com.jrtc.backboard.network.RedditResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,12 +37,15 @@ class TweetViewModel : ViewModel() {
         viewModelScope.launch {
             val response = RedditApi.retrofitService.getNBATweets()
             // Parses the nested JSON object
-            response.enqueue(object : Callback<RedditData> {
-                override fun onResponse(call: Call<RedditData>, response: Response<RedditData>) {
+            response.enqueue(object : Callback<RedditResponse> {
+                override fun onResponse(
+                    call: Call<RedditResponse>,
+                    response: Response<RedditResponse>
+                ) {
                     _tweets.value = response.body()?.data?.posts
                 }
 
-                override fun onFailure(call: Call<RedditData>, t: Throwable) {
+                override fun onFailure(call: Call<RedditResponse>, t: Throwable) {
                     _tweets.value = listOf()
                     t.printStackTrace()
                 }

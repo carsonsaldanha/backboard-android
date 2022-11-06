@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.jrtc.backboard.network.Boxscore
 import com.jrtc.backboard.network.Game
 import com.jrtc.backboard.network.NBAApi
-import com.jrtc.backboard.network.TodaysGames
+import com.jrtc.backboard.network.TodaysGamesResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,12 +38,12 @@ class GameViewModel : ViewModel() {
         viewModelScope.launch {
             val response = NBAApi.retrofitService.getGames()
             // Parses the nested JSON object
-            response.enqueue(object : Callback<TodaysGames> {
-                override fun onResponse(call: Call<TodaysGames>, response: Response<TodaysGames>) {
+            response.enqueue(object : Callback<TodaysGamesResponse> {
+                override fun onResponse(call: Call<TodaysGamesResponse>, response: Response<TodaysGamesResponse>) {
                     _games.value = response.body()?.scoreboard?.games
                 }
 
-                override fun onFailure(call: Call<TodaysGames>, t: Throwable) {
+                override fun onFailure(call: Call<TodaysGamesResponse>, t: Throwable) {
                     _games.value = listOf()
                     t.printStackTrace()
                 }

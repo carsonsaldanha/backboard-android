@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jrtc.backboard.network.Post
 import com.jrtc.backboard.network.RedditApi
-import com.jrtc.backboard.network.RedditData
+import com.jrtc.backboard.network.RedditResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,12 +23,6 @@ class HighlightViewModel : ViewModel() {
     // The external immutable LiveData for the list of highlights
     val highlights: LiveData<List<Post>> = _highlights
 
-    // The internal MutableLiveData that stores a single highlight
-    private val _highlight = MutableLiveData<Post>()
-
-    // The external immutable LiveData for a single highlight
-    val highlight: LiveData<Post> = _highlight
-
     /**
      * Gets NBA highlights from the Reddit api Retrofit service and updates the
      * [Post] [List] [LiveData] highlights.
@@ -37,25 +31,20 @@ class HighlightViewModel : ViewModel() {
         viewModelScope.launch {
             val response = RedditApi.retrofitService.getNBAHighlights()
             // Parses the nested JSON object
-            response.enqueue(object : Callback<RedditData> {
-                override fun onResponse(call: Call<RedditData>, response: Response<RedditData>) {
+            response.enqueue(object : Callback<RedditResponse> {
+                override fun onResponse(
+                    call: Call<RedditResponse>,
+                    response: Response<RedditResponse>
+                ) {
                     _highlights.value = response.body()?.data?.posts
                 }
 
-                override fun onFailure(call: Call<RedditData>, t: Throwable) {
+                override fun onFailure(call: Call<RedditResponse>, t: Throwable) {
                     _highlights.value = listOf()
                     t.printStackTrace()
                 }
             })
         }
-    }
-
-    /**
-     * Sets [Post] [LiveData] highlight to the passed in tweet to play a highlight when a list item
-     * is clicked.
-     */
-    fun onHighlightClicked(post: Post) {
-        _highlight.value = post
     }
 
 }

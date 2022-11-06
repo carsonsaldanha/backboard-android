@@ -25,20 +25,20 @@ private val retrofit = Retrofit.Builder()
  */
 interface RedditApiService {
     /**
-     * Returns a [Call] of [RedditData] and this method can be called from a Coroutine.
+     * Returns a [Call] of [RedditResponse] and this method can be called from a Coroutine.
      * The @GET annotation indicates that the specified endpoint will be requested with the GET
      * HTTP method.
      */
     @GET(".json?q=subreddit%3Anba%20site%3Atwitter.com&sort=hot")
-    fun getNBATweets(): Call<RedditData>
+    fun getNBATweets(): Call<RedditResponse>
 
     /**
-     * Returns a [Call] of [RedditData] and this method can be called from a Coroutine.
+     * Returns a [Call] of [RedditResponse] and this method can be called from a Coroutine.
      * The @GET annotation indicates that the specified endpoint will be requested with the GET
      * HTTP method.
      */
     @GET(".json?q=subreddit%3Anba%20site%3Astreamable.com&sort=hot")
-    fun getNBAHighlights(): Call<RedditData>
+    fun getNBAHighlights(): Call<RedditResponse>
 }
 
 /**
