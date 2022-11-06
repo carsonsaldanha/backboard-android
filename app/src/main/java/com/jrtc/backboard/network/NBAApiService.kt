@@ -22,7 +22,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 /**
- * A public interface that exposes the [getGames] method.
+ * A public interface that exposes the [getGames] and [getBoxscore] methods.
  */
 interface NBAApiService {
     /**
