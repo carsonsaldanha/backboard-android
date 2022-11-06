@@ -26,12 +26,12 @@ private val retrofit = Retrofit.Builder()
  */
 interface NBAApiService {
     /**
-     * Returns a [Call] of [TodaysGames] and this method can be called from a Coroutine.
+     * Returns a [Call] of [TodaysGamesResponse] and this method can be called from a Coroutine.
      * The @GET annotation indicates that the specified endpoint will be requested with the GET
      * HTTP method.
      */
     @GET("scoreboard/todaysScoreboard_00.json")
-    fun getGames(): Call<TodaysGames>
+    fun getGames(): Call<TodaysGamesResponse>
 
     @GET("boxscore/boxscore_{gameId}.json")
     fun getBoxscore(@Path("gameId") gameId: String): Call<Boxscore>

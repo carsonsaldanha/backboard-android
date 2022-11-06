@@ -3,10 +3,10 @@ package com.jrtc.backboard.network
 import com.jrtc.backboard.R
 
 /**
- * This data class defines [TodaysGames] which includes the scoreboard.
+ * This data class defines [TodaysGamesResponse] which includes the scoreboard.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
-data class TodaysGames(
+data class TodaysGamesResponse(
     val scoreboard: Scoreboard
 )
 

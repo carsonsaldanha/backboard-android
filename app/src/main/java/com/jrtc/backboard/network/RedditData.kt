@@ -3,18 +3,18 @@ package com.jrtc.backboard.network
 import com.squareup.moshi.Json
 
 /**
- * This data class defines [RedditData] which includes the data.
+ * This data class defines [RedditResponse] which includes the data.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
-data class RedditData(
-    val data: Data
+data class RedditResponse(
+    val data: RedditData
 )
 
 /**
- * This data class defines [Data] which includes the list of posts.
+ * This data class defines [RedditData] which includes the list of posts.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
-data class Data(
+data class RedditData(
     @Json(name = "children")
     val posts: List<Post>
 )
