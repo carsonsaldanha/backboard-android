@@ -33,6 +33,18 @@
         android:id="@+id/navigation_highlights"
         android:name="com.jrtc.backboard.ui.highlights.HighlightListFragment"
         android:label="@string/title_highlights"
-        tools:layout="@layout/fragment_highlights" />
+        tools:layout="@layout/fragment_highlights">
+
+        <action
+            android:id="@+id/action_navigation_highlights_to_navigation_video"
+            app:destination="@id/navigation_video" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_video"
+        android:name="com.jrtc.backboard.ui.highlights.VideoFragment"
+        android:label="Video"
+        tools:layout="@layout/fragment_video" />
 
 </navigation>
