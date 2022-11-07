@@ -39,7 +39,10 @@ class GameViewModel : ViewModel() {
             val response = NBAApi.retrofitService.getGames()
             // Parses the nested JSON object
             response.enqueue(object : Callback<TodaysGamesResponse> {
-                override fun onResponse(call: Call<TodaysGamesResponse>, response: Response<TodaysGamesResponse>) {
+                override fun onResponse(
+                    call: Call<TodaysGamesResponse>,
+                    response: Response<TodaysGamesResponse>
+                ) {
                     _games.value = response.body()?.scoreboard?.games
                 }
 
@@ -56,7 +59,10 @@ class GameViewModel : ViewModel() {
             val response = NBAApi.retrofitService.getBoxscore(_game.value!!.gameId)
             // Parses the nested JSON object
             response.enqueue(object : Callback<BoxscoreResponse> {
-                override fun onResponse(call: Call<BoxscoreResponse>, response: Response<BoxscoreResponse>) {
+                override fun onResponse(
+                    call: Call<BoxscoreResponse>,
+                    response: Response<BoxscoreResponse>
+                ) {
                     _game.value = response.body()?.game
                 }
 

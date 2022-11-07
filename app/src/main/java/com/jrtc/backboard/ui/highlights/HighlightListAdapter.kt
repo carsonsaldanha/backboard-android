@@ -24,7 +24,8 @@ class HighlightListAdapter(private val clickListener: HighlightListener) :
             binding.clickListener = clickListener
             binding.executePendingBindings()
 
-            Picasso.get().load(highlight.data.media?.embed?.thumbnailUrl).into(binding.highlightThumbnailImageView)
+            Picasso.get().load(highlight.data.media?.embed?.thumbnailUrl)
+                .into(binding.highlightThumbnailImageView)
         }
 
     }

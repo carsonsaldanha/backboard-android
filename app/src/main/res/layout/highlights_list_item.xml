@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="highlight"
             type="com.jrtc.backboard.network.Post" />
@@ -13,11 +10,6 @@
             name="clickListener"
             type="com.jrtc.backboard.ui.highlights.HighlightListener" />
     </data>
-
-    <!--    <WebView-->
-    <!--        android:id="@+id/highlight_web_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content" />-->
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/game_card_view"
