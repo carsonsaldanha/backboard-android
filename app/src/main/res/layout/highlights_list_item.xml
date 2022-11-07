@@ -4,14 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="highlight"
-            type="com.jrtc.backboard.network.PostData" />
+            type="com.jrtc.backboard.network.Post" />
+
+        <variable
+            name="clickListener"
+            type="com.jrtc.backboard.ui.highlights.HighlightListener" />
     </data>
 
-    <WebView
-        android:id="@+id/highlight_web_view"
+    <!--    <WebView-->
+    <!--        android:id="@+id/highlight_web_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content" />-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/game_card_view"
+        style="?attr/materialCardViewElevatedStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:onClick="@{() -> clickListener.onClick(highlight)}">
+
+        <ImageView
+            android:id="@+id/highlight_thumbnail_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

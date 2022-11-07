@@ -33,5 +33,17 @@ data class Post(
  */
 data class PostData(
     val title: String,
+    @Json(name = "secure_media")
+    val media: Media?,
     val url: String
+)
+
+data class Media(
+    @Json(name = "oembed")
+    val embed: Embed?
+)
+
+data class Embed(
+    @Json(name = "thumbnail_url")
+    val thumbnailUrl: String?
 )
