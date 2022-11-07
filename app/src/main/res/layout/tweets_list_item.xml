@@ -6,7 +6,7 @@
     <data>
         <variable
             name="tweet"
-            type="com.jrtc.backboard.network.PostData" />
+            type="com.jrtc.backboard.network.Post" />
 
         <variable
             name="clickListener"
@@ -17,7 +17,7 @@
         android:id="@+id/tweet_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{tweet.title}"
+        android:text="@{tweet.data.title}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Tweet Title" />
