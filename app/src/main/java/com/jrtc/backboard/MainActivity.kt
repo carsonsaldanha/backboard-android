@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         // Hides the bottom navigation bar on unspecified fragments
         navController.addOnDestinationChangedListener { _, navDest: NavDestination, _ ->
             if (navDest.id == R.id.navigation_games || navDest.id == R.id.navigation_tweets
-                || navDest.id == R.id.navigation_highlights) {
+                || navDest.id == R.id.navigation_highlights
+            ) {
                 bottomNavigationView.visibility = View.VISIBLE
             } else {
                 bottomNavigationView.visibility = View.GONE

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jrtc.backboard.network.Boxscore
+import com.jrtc.backboard.network.BoxscoreResponse
 import com.jrtc.backboard.network.Game
 import com.jrtc.backboard.network.NBAApi
 import com.jrtc.backboard.network.TodaysGamesResponse
@@ -39,7 +39,10 @@ class GameViewModel : ViewModel() {
             val response = NBAApi.retrofitService.getGames()
             // Parses the nested JSON object
             response.enqueue(object : Callback<TodaysGamesResponse> {
-                override fun onResponse(call: Call<TodaysGamesResponse>, response: Response<TodaysGamesResponse>) {
+                override fun onResponse(
+                    call: Call<TodaysGamesResponse>,
+                    response: Response<TodaysGamesResponse>
+                ) {
                     _games.value = response.body()?.scoreboard?.games
                 }
 
@@ -55,12 +58,15 @@ class GameViewModel : ViewModel() {
         viewModelScope.launch {
             val response = NBAApi.retrofitService.getBoxscore(_game.value!!.gameId)
             // Parses the nested JSON object
-            response.enqueue(object : Callback<Boxscore> {
-                override fun onResponse(call: Call<Boxscore>, response: Response<Boxscore>) {
+            response.enqueue(object : Callback<BoxscoreResponse> {
+                override fun onResponse(
+                    call: Call<BoxscoreResponse>,
+                    response: Response<BoxscoreResponse>
+                ) {
                     _game.value = response.body()?.game
                 }
 
-                override fun onFailure(call: Call<Boxscore>, t: Throwable) {
+                override fun onFailure(call: Call<BoxscoreResponse>, t: Throwable) {
                     t.printStackTrace()
                 }
             })
