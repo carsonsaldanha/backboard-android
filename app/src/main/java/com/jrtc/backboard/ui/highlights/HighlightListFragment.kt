@@ -1,14 +1,14 @@
 package com.jrtc.backboard.ui.highlights
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
+
 
 class HighlightListFragment : Fragment() {
 
@@ -27,7 +27,9 @@ class HighlightListFragment : Fragment() {
         viewModel.getHighlightsList()
         binding.highlightsRecyclerView.adapter = HighlightListAdapter(HighlightListener { highlight ->
             viewModel.onHighlightClicked(highlight)
-            findNavController().navigate(R.id.action_navigation_highlights_to_navigation_video)
+            val intent = Intent(activity, VideoActivity::class.java)
+            startActivity(intent)
+//            (activity as Activity?)!!.overridePendingTransition(0, 0)
         })
 
         // Inflates the layout for this fragment
