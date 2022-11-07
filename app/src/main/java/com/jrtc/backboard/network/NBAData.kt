@@ -10,7 +10,10 @@ data class TodaysGamesResponse(
     val scoreboard: Scoreboard
 )
 
-data class Boxscore(
+/**
+ * TODO
+ */
+data class BoxscoreResponse(
     val game: Game
 )
 

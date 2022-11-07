@@ -8,6 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
+import com.jrtc.backboard.network.StreamableApi
+import com.jrtc.backboard.network.StreamableResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class HighlightListFragment : Fragment() {
@@ -27,9 +35,27 @@ class HighlightListFragment : Fragment() {
         viewModel.getHighlightsList()
         binding.highlightsRecyclerView.adapter = HighlightListAdapter(HighlightListener { highlight ->
             viewModel.onHighlightClicked(highlight)
-            val intent = Intent(activity, VideoActivity::class.java)
-            startActivity(intent)
-//            (activity as Activity?)!!.overridePendingTransition(0, 0)
+            val highlightVideoURL = highlight.data.url
+            val streamableVideoId = highlightVideoURL.substring(23)
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = StreamableApi.retrofitService.getVideo(streamableVideoId)
+                // Parses the nested JSON object
+                response.enqueue(object : Callback<StreamableResponse> {
+                    override fun onResponse(call: Call<StreamableResponse>, response: Response<StreamableResponse>) {
+                        val mp4VideoUrl = response.body()?.files?.mp4?.url!!
+//                        val mp4MobileVideoUrl = response.body()?.files?.mp4Mobile?.url!!
+                        val intent = Intent(activity, VideoActivity::class.java)
+                        intent.putExtra("mp4VideoUrl", mp4VideoUrl)
+//                        intent.putExtra("mp4MobileVideoUrl", mp4MobileVideoUrl)
+                        startActivity(intent)
+                    }
+
+                    override fun onFailure(call: Call<StreamableResponse>, t: Throwable) {
+                        t.printStackTrace()
+                    }
+                })
+            }
         })
 
         // Inflates the layout for this fragment

@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "https://www.reddit.com/search/"
+private const val BASE_URL = "https://www.reddit.com/"
 
 // Builds the Moshi object with Kotlin adapter factory that Retrofit will be using to parse JSON
 private val moshi = Moshi.Builder()
@@ -29,7 +29,7 @@ interface RedditApiService {
      * The @GET annotation indicates that the specified endpoint will be requested with the GET
      * HTTP method.
      */
-    @GET(".json?q=subreddit%3Anba%20site%3Atwitter.com&sort=hot")
+    @GET("search/.json?q=subreddit%3Anba%20site%3Atwitter.com&sort=hot")
     fun getNBATweets(): Call<RedditResponse>
 
     /**
@@ -37,7 +37,7 @@ interface RedditApiService {
      * The @GET annotation indicates that the specified endpoint will be requested with the GET
      * HTTP method.
      */
-    @GET(".json?q=subreddit%3Anba%20site%3Astreamable.com&sort=hot")
+    @GET("search/.json?q=subreddit%3Anba%20site%3Astreamable.com&sort=hot")
     fun getNBAHighlights(): Call<RedditResponse>
 }
 

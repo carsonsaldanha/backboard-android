@@ -48,7 +48,7 @@ class VideoActivity : AppCompatActivity() {
             .build()
             .also { exoPlayer ->
                 binding.highlightPlayerView.player = exoPlayer
-                val mediaItem = MediaItem.fromUri("https://cdn-cf-east.streamable.com/video/mp4/doda1w.mp4?Expires=1668116940&Signature=k35p-Kuzm-ZLX3NX-jpCnwSySdtF-pPRSr5EJ4SK2z3oJ6CqbyRKqS02l93hdXY9KaeERSRwFGW9AbHjSyHjeL8gjmCnHlwDhbktpx9~zA8wHdXFR6k6AZuq4QkT3c7EHCD4slMzV7-bGPwPAMFg7JJzG4Aop09J~tyyoy4oC5dgFgyx9MYKKxQQ5maf86KwggShqLEOe9eX14~6J4wlzSJMtBwvjC-NN358eSBZs5kFdBXw54LWBQSoJ~Kn6LrxH4sObzrbcDbcoRra5UZYTeAVOlDXcSmQpC8AFKy6N3nf4rkwWISWRcdcI1BCq3Bjtcot-Ww27KYgrzWJ5i-~4w__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ")
+                val mediaItem = MediaItem.fromUri(intent.getStringExtra("mp4VideoUrl")!!)
                 exoPlayer.setMediaItem(mediaItem)
                 exoPlayer.playWhenReady = playWhenReady
                 exoPlayer.seekTo(currentItem, playbackPosition)

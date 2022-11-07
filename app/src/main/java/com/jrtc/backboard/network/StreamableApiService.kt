@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-private const val BASE_URL = "https://cdn.nba.com/static/json/liveData/"
+private const val BASE_URL = "https://api.streamable.com/"
 
 // Builds the Moshi object with Kotlin adapter factory that Retrofit will be using to parse JSON
 private val moshi = Moshi.Builder()
@@ -22,27 +22,21 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 /**
- * A public interface that exposes the [getGames] and [getBoxscore] methods.
+ * A public interface that exposes the [getVideo] method.
  */
-interface NBAApiService {
+interface StreamableApiService {
     /**
-     * Returns a [Call] of [TodaysGamesResponse] and this method can be called from a Coroutine.
+     * Returns a [Call] of [StreamableResponse] and this method can be called from a Coroutine.
      * The @GET annotation indicates that the specified endpoint will be requested with the GET
      * HTTP method.
      */
-    @GET("scoreboard/todaysScoreboard_00.json")
-    fun getGames(): Call<TodaysGamesResponse>
-
-    /**
-     * TODO
-     */
-    @GET("boxscore/boxscore_{gameId}.json")
-    fun getBoxscore(@Path("gameId") gameId: String): Call<BoxscoreResponse>
+    @GET("videos/{videoId}")
+    fun getVideo(@Path("videoId") videoId: String): Call<StreamableResponse>
 }
 
 /**
- * A public NBA Api object that exposes the lazy-initialized Retrofit service
+ * A public Streamable Api object that exposes the lazy-initialized Retrofit service
  */
-object NBAApi {
-    val retrofitService: NBAApiService by lazy { retrofit.create(NBAApiService::class.java) }
+object StreamableApi {
+    val retrofitService: StreamableApiService by lazy { retrofit.create(StreamableApiService::class.java) }
 }
