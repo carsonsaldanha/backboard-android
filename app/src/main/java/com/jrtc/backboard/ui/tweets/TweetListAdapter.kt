@@ -19,7 +19,7 @@ class TweetListAdapter(private val clickListener: TweetListener) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(clickListener: TweetListener, tweet: Post) {
-            binding.tweet = tweet.data
+            binding.tweet = tweet
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
