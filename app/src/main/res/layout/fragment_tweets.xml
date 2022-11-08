@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.jrtc.backboard.ui.tweets.TweetViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

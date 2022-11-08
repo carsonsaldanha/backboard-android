@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jrtc.backboard.databinding.FragmentTweetsBinding
 
+/**
+ * This class defines the fragment for the tweets screen.
+ */
 class TweetListFragment : Fragment() {
 
     private val viewModel: TweetViewModel by activityViewModels()
@@ -23,11 +26,12 @@ class TweetListFragment : Fragment() {
 
         // Calls the view model method that calls the Reddit api
         viewModel.getTweetsList()
+
+        // Inflates the recycler view
         binding.tweetsRecyclerView.adapter = TweetListAdapter(TweetListener { tweet ->
             viewModel.onTweetClicked(tweet)
         })
 
-        // Inflates the layout for this fragment
         return binding.root
     }
 

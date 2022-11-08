@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="tweet"
             type="com.jrtc.backboard.network.Post" />
@@ -11,6 +12,7 @@
         <variable
             name="clickListener"
             type="com.jrtc.backboard.ui.tweets.TweetListener" />
+
     </data>
 
     <TextView

@@ -35,6 +35,8 @@ class HighlightListFragment : Fragment() {
 
         // Calls the view model method that calls the Reddit api
         viewModel.getHighlightsList()
+
+        // Inflates the recycler view
         binding.highlightsRecyclerView.adapter =
             HighlightListAdapter(HighlightListener { highlight ->
                 viewModel.onHighlightClicked(highlight)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Backboard</string>
     <string name="title_games">Games</string>
     <string name="title_tweets">Tweets</string>
@@ -27,4 +28,6 @@
     <string name="table_pf">PF</string>
     <string name="table_to">TO</string>
     <string name="table_pm">+/-</string>
+    <string name="no_games_scheduled">No games scheduled</string>
+
 </resources>

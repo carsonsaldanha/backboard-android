@@ -28,6 +28,15 @@ class GameListFragment : Fragment() {
 
         // Calls the view model method that calls the NBA api
         viewModel.getGamesList()
+
+        // Displays the "No games scheduled" text if there are no games today
+        viewModel.games.observe(viewLifecycleOwner) { value ->
+            if (value.isEmpty()) {
+                binding.noGamesScheduledTextView.visibility = View.VISIBLE
+            }
+        }
+
+        // Inflates the recycler view
         binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
             viewModel.onGameClicked(game)
             // Only displays the boxscore if the game has started or finished
