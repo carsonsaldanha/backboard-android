@@ -1,16 +1,14 @@
 package com.jrtc.backboard.ui.highlights
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.media3.common.MediaItem
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.jrtc.backboard.databinding.ActivityVideoBinding
 
-class VideoActivity : AppCompatActivity() {
+@UnstableApi class VideoActivity : AppCompatActivity() {
 
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityVideoBinding.inflate(layoutInflater)
@@ -23,6 +21,7 @@ class VideoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.highlightPlayerView.controllerAutoShow = false
     }
 
     override fun onStart() {
@@ -32,7 +31,7 @@ class VideoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        hideSystemUi()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         if (player == null) {
             initializePlayer()
         }
@@ -54,16 +53,6 @@ class VideoActivity : AppCompatActivity() {
                 exoPlayer.seekTo(currentItem, playbackPosition)
                 exoPlayer.prepare()
             }
-    }
-
-    @SuppressLint("InlinedApi")
-    private fun hideSystemUi() {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window, binding.highlightPlayerView).let { controller ->
-            controller.hide(WindowInsetsCompat.Type.systemBars())
-            controller.systemBarsBehavior =
-                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
     }
 
     private fun releasePlayer() {
