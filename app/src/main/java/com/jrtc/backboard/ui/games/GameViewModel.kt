@@ -54,6 +54,18 @@ class GameViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Sets [Game] [LiveData] to the passed in game to display the details of a game when a list
+     * item is clicked.
+     */
+    fun onGameClicked(game: Game) {
+        _game.value = game
+        getBoxscore()
+    }
+
+    /**
+     * Gets boxscore information from the NBA api Retrofit service and updates the [Game] [LiveData].
+     */
     private fun getBoxscore() {
         viewModelScope.launch {
             val response = NBAApi.retrofitService.getBoxscore(_game.value!!.gameId)
@@ -71,15 +83,6 @@ class GameViewModel : ViewModel() {
                 }
             })
         }
-    }
-
-    /**
-     * Sets [Game] [LiveData] to the passed in game to display the details of a game when a list
-     * item is clicked.
-     */
-    fun onGameClicked(game: Game) {
-        _game.value = game
-        getBoxscore()
     }
 
 }

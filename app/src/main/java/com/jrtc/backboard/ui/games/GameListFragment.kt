@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentGamesBinding
 
+/**
+ * This class defines the fragment for the games screen.
+ */
 class GameListFragment : Fragment() {
 
     private val viewModel: GameViewModel by activityViewModels()
@@ -33,7 +36,6 @@ class GameListFragment : Fragment() {
             }
         })
 
-        // Inflates the layout for this fragment
         return binding.root
     }
 

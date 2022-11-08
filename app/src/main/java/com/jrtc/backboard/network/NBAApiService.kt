@@ -34,7 +34,9 @@ interface NBAApiService {
     fun getGames(): Call<TodaysGamesResponse>
 
     /**
-     * TODO
+     * Returns a [Call] of [BoxscoreResponse] and this method can be called from a Coroutine.
+     * The @GET annotation indicates that the specified endpoint will be requested with the GET
+     * HTTP method.
      */
     @GET("boxscore/boxscore_{gameId}.json")
     fun getBoxscore(@Path("gameId") gameId: String): Call<BoxscoreResponse>

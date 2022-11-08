@@ -42,12 +42,16 @@ fun bindHighlightRecyclerView(recyclerView: RecyclerView, data: List<Post>?) {
     adapter.submitList(data)
 }
 
+/**
+ * Updates the data shown in the boxscore [ConstraintLayout].
+ */
 @BindingAdapter(value = ["boxscoreData", "teamType"], requireAll = true)
 fun bindBoxscoreStats(
     constraintLayout: ConstraintLayout,
     players: List<Player>?,
     isAwayTeam: Boolean
 ) {
+    // Gets the corresponding table id based on home or away team.
     val tableFixed =
         if (isAwayTeam)
             constraintLayout.findViewById<TableLayout>(R.id.away_team_fixed_player_table_layout)
@@ -60,13 +64,15 @@ fun bindBoxscoreStats(
             else
                 constraintLayout.findViewById(R.id.home_team_scrollable_stats_table_layout)
 
-        players?.forEach() {
+        // Sets the stats for each player's row
+        players?.forEach {
             val fixedRow = TableRow(tableFixed.context)
             val scrollRow = TableRow(tableScroll.context)
             val linearLayout = LinearLayout(tableFixed.context)
 
             val playerName = MaterialTextView(linearLayout.context)
             playerName.text = it.nameI
+            // Sets the right and bottom margins for the player column
             playerName.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -143,6 +149,7 @@ fun bindBoxscoreStats(
             val plusMinus = MaterialTextView(fixedRow.context)
             plusMinus.text = it.statistics.plusMinusPoints.toInt().toString()
 
+            // Adds the new views to the layout
             fixedRow.addView(linearLayout)
             scrollRow.addView(minutes)
             scrollRow.addView(points)
@@ -171,6 +178,10 @@ fun bindBoxscoreStats(
     }
 }
 
+/**
+ * Converts a decimal to a percent with rounding. Returns "-" if the player didn't attempt
+ * any shots.
+ */
 private fun convertDecimalToPercent(attempted: Int, decimal: Double): String {
     return if (attempted == 0) {
         "-"

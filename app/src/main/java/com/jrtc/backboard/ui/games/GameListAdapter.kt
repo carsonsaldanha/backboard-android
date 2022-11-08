@@ -24,6 +24,7 @@ class GameListAdapter(private val clickListener: GameListener) :
             binding.clickListener = clickListener
             binding.executePendingBindings()
 
+            // Sets the team logos
             binding.awayTeamLogoImageView.setImageResource(getTeamDrawableLogo(game.awayTeam.teamId))
             binding.homeTeamLogoImageView.setImageResource(getTeamDrawableLogo(game.homeTeam.teamId))
             // Only displays the score if the game has started or finished

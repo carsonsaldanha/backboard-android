@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="highlight"
             type="com.jrtc.backboard.network.Post" />
@@ -9,6 +10,7 @@
         <variable
             name="clickListener"
             type="com.jrtc.backboard.ui.highlights.HighlightListener" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView

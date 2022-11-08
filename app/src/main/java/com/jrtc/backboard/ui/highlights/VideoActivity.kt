@@ -4,11 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.media3.common.MediaItem
-import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.jrtc.backboard.databinding.ActivityVideoBinding
 
-@UnstableApi class VideoActivity : AppCompatActivity() {
+/**
+ * This class defines the activity for the video screen.
+ */
+class VideoActivity : AppCompatActivity() {
 
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityVideoBinding.inflate(layoutInflater)
@@ -21,7 +23,6 @@ import com.jrtc.backboard.databinding.ActivityVideoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.highlightPlayerView.controllerAutoShow = false
     }
 
     override fun onStart() {
@@ -42,6 +43,9 @@ import com.jrtc.backboard.databinding.ActivityVideoBinding
         releasePlayer()
     }
 
+    /**
+     * Builds an ExoPlayer object to play the video.
+     */
     private fun initializePlayer() {
         player = ExoPlayer.Builder(this)
             .build()
@@ -55,6 +59,9 @@ import com.jrtc.backboard.databinding.ActivityVideoBinding
             }
     }
 
+    /**
+     * Releases the ExoPlayer by storing the current player state.
+     */
     private fun releasePlayer() {
         player?.let { exoPlayer ->
             playbackPosition = exoPlayer.currentPosition

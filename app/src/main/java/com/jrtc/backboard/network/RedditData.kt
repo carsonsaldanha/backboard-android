@@ -28,7 +28,7 @@ data class Post(
 )
 
 /**
- * This data class defines [PostData] which includes the title of a Reddit post and URL.
+ * This data class defines [PostData] which includes the title of a Reddit post and url.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
 data class PostData(
@@ -38,11 +38,19 @@ data class PostData(
     val url: String
 )
 
+/**
+ * This data class defines [Media] which includes the embed information of a Reddit post.
+ * The property names of this data class are used by Moshi to match the names of values in JSON.
+ */
 data class Media(
     @Json(name = "oembed")
     val embed: Embed?
 )
 
+/**
+ * This data class defines [Embed] which includes the thumbnail url of a Reddit post.
+ * The property names of this data class are used by Moshi to match the names of values in JSON.
+ */
 data class Embed(
     @Json(name = "thumbnail_url")
     val thumbnailUrl: String?

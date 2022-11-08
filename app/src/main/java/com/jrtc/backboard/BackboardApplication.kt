@@ -7,7 +7,7 @@ class BackboardApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // Apply dynamic color
+        // Applies dynamic color
         DynamicColors.applyToActivitiesIfAvailable(this)
     }
 

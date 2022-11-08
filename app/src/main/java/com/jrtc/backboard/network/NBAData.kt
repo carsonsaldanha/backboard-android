@@ -11,7 +11,8 @@ data class TodaysGamesResponse(
 )
 
 /**
- * TODO
+ * This data class defines [BoxscoreResponse] which includes the game data.
+ * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
 data class BoxscoreResponse(
     val game: Game
@@ -41,7 +42,7 @@ data class Game(
 
 /**
  * This data class defines [Team] which includes the team id, team name, team city, team tricode,
- * wins, losses, and score.
+ * wins, losses, score, and players.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
 data class Team(
@@ -55,12 +56,20 @@ data class Team(
     val players: List<Player>?
 )
 
+/**
+ * This data class defines [Player] which includes the player id, statistics, and name.
+ * The property names of this data class are used by Moshi to match the names of values in JSON.
+ */
 data class Player(
     val personId: Int,
     val statistics: Statistics,
     val nameI: String
 )
 
+/**
+ * This data class defines [Statistics] which includes various player statistics for the game.
+ * The property names of this data class are used by Moshi to match the names of values in JSON.
+ */
 data class Statistics(
     val assists: Int,
     val blocks: Int,

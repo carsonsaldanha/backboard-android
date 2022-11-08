@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jrtc.backboard.databinding.FragmentBoxscoreBinding
 
+/**
+ * This class defines the fragment for the boxscore screen.
+ */
 class BoxscoreFragment : Fragment() {
 
     private val viewModel: GameViewModel by activityViewModels()
@@ -21,7 +24,6 @@ class BoxscoreFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        // Inflates the layout for this fragment
         return binding.root
     }
 

@@ -17,7 +17,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+/**
+ * This class defines the fragment for the highlights screen.
+ */
 class HighlightListFragment : Fragment() {
 
     private val viewModel: HighlightViewModel by activityViewModels()
@@ -36,9 +38,11 @@ class HighlightListFragment : Fragment() {
         binding.highlightsRecyclerView.adapter =
             HighlightListAdapter(HighlightListener { highlight ->
                 viewModel.onHighlightClicked(highlight)
+                // Extracts the Streamable video id from the video url
                 val highlightVideoURL = highlight.data.url
                 val streamableVideoId = highlightVideoURL.substring(23)
 
+                // Calls the Streamable api to get the MP4 video url
                 CoroutineScope(Dispatchers.IO).launch {
                     val response = StreamableApi.retrofitService.getVideo(streamableVideoId)
                     // Parses the nested JSON object
@@ -47,11 +51,10 @@ class HighlightListFragment : Fragment() {
                             call: Call<StreamableResponse>,
                             response: Response<StreamableResponse>
                         ) {
+                            // Starts the VideoActivity and passes the MP4 video url
                             val mp4VideoUrl = response.body()?.files?.mp4?.url!!
-//                            val mp4MobileVideoUrl = response.body()?.files?.mp4Mobile?.url!!
                             val intent = Intent(activity, VideoActivity::class.java)
                             intent.putExtra("mp4VideoUrl", mp4VideoUrl)
-//                            intent.putExtra("mp4MobileVideoUrl", mp4MobileVideoUrl)
                             startActivity(intent)
                         }
 
@@ -62,7 +65,6 @@ class HighlightListFragment : Fragment() {
                 }
             })
 
-        // Inflates the layout for this fragment
         return binding.root
     }
 
