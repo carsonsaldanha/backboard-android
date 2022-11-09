@@ -20,7 +20,9 @@
         style="?attr/materialCardViewElevatedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:onClick="@{() -> clickListener.onClick(tweet)}">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,6 +33,7 @@
                 android:id="@+id/tweet_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="?attr/textAppearanceBody1"
                 android:text="@{tweet.data.title}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
