@@ -55,9 +55,7 @@
                 android:text="@{highlight.data.title}"
                 android:scaleType="center"
                 android:textStyle="bold"
-                android:background="#A1404F"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
                 app:layout_constraintTop_toBottomOf="@id/highlight_thumbnail_image_view"
                 />
 
