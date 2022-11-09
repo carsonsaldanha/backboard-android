@@ -46,6 +46,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_round_play_primary_24dp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:text="@{highlight.data.title}"
+                android:scaleType="centerCrop"
+                android:textStyle="bold"
+                android:background="#99141414"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@id/highlight_thumbnail_image_view"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
