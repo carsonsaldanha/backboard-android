@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -40,11 +41,23 @@
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:importantForAccessibility="no"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/highlight_title_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_round_play_primary_24dp" />
+
+            <TextView
+                android:id="@+id/highlight_title_text_view"
+                style="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4sp"
+                android:padding="12dp"
+                android:text="@{highlight.data.title}"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/highlight_thumbnail_image_view"
+                tools:text="Highlight Text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
