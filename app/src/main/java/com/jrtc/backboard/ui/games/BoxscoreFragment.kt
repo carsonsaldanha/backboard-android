@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.jrtc.backboard.databinding.FragmentBoxscoreBinding
+import com.jrtc.backboard.network.getTeamDrawableLogo
 
 /**
  * This class defines the fragment for the boxscore screen.
@@ -23,6 +24,9 @@ class BoxscoreFragment : Fragment() {
         val binding = FragmentBoxscoreBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        binding.awayTeamLogoImageView.setImageResource(getTeamDrawableLogo(viewModel.game.value!!.awayTeam.teamId))
+        binding.homeTeamLogoImageView.setImageResource(getTeamDrawableLogo(viewModel.game.value!!.homeTeam.teamId))
 
         return binding.root
     }
