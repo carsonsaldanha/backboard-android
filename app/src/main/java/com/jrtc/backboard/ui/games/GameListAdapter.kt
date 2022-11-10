@@ -1,5 +1,6 @@
 package com.jrtc.backboard.ui.games
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -31,6 +32,16 @@ class GameListAdapter(private val clickListener: GameListener) :
             if (game.gameStatus != 1) {
                 binding.awayTeamScoreTextView.text = game.awayTeam.score.toString()
                 binding.homeTeamScoreTextView.text = game.homeTeam.score.toString()
+            }
+            // Updates the score text styling for a finished game
+            if (game.gameStatus == 3) {
+                val textColor: ColorStateList = binding.gameStatusTextView.textColors
+                // Checks whether away or home team won
+                if (game.awayTeam.score > game.homeTeam.score) {
+                    binding.homeTeamScoreTextView.setTextColor(textColor)
+                } else {
+                    binding.awayTeamScoreTextView.setTextColor(textColor)
+                }
             }
         }
 
