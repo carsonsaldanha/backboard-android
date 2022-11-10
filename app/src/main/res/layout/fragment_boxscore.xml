@@ -14,12 +14,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
         android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <!-- Away team box score layout -->
             <com.google.android.material.card.MaterialCardView
@@ -39,12 +39,44 @@
                     app:boxscoreData="@{viewModel.game.awayTeam.players}"
                     app:teamType="@{true}">
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/away_team_name_logo_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"
+                        app:layout_constraintBottom_toTopOf="@id/away_team_fixed_player_table_layout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/away_team_logo_image_view"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:contentDescription="@{viewModel.game.awayTeam.teamName}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@drawable/logo_1610612745" />
+
+                        <TextView
+                            android:id="@+id/away_team_name_text_view"
+                            style="?attr/textAppearanceBodyLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.game.awayTeam.teamName}"
+                            app:layout_constraintBottom_toBottomOf="@id/away_team_logo_image_view"
+                            app:layout_constraintStart_toEndOf="@id/away_team_logo_image_view"
+                            app:layout_constraintTop_toTopOf="@id/away_team_logo_image_view"
+                            tools:text="Rockets" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <TableLayout
                         android:id="@+id/away_team_fixed_player_table_layout"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toBottomOf="@id/away_team_name_logo_layout">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
@@ -59,13 +91,13 @@
                     <HorizontalScrollView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:fadingEdgeLength="40dp"
+                        android:fadingEdgeLength="12dp"
                         android:fillViewport="true"
                         android:requiresFadingEdge="horizontal"
                         android:scrollbars="horizontal"
                         app:layout_constraintLeft_toRightOf="@id/away_team_fixed_player_table_layout"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toBottomOf="@id/away_team_name_logo_layout">
 
                         <TableLayout
                             android:id="@+id/away_team_scrollable_stats_table_layout"
@@ -256,12 +288,44 @@
                     app:boxscoreData="@{viewModel.game.homeTeam.players}"
                     app:teamType="@{false}">
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/home_team_name_logo_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"
+                        app:layout_constraintBottom_toTopOf="@id/home_team_fixed_player_table_layout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/home_team_logo_image_view"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:contentDescription="@{viewModel.game.homeTeam.teamName}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@drawable/logo_1610612755" />
+
+                        <TextView
+                            android:id="@+id/home_team_name_text_view"
+                            style="?attr/textAppearanceBodyLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.game.homeTeam.teamName}"
+                            app:layout_constraintBottom_toBottomOf="@id/home_team_logo_image_view"
+                            app:layout_constraintStart_toEndOf="@id/home_team_logo_image_view"
+                            app:layout_constraintTop_toTopOf="@id/home_team_logo_image_view"
+                            tools:text="76ers" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <TableLayout
                         android:id="@+id/home_team_fixed_player_table_layout"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toBottomOf="@id/home_team_name_logo_layout">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
@@ -276,13 +340,13 @@
                     <HorizontalScrollView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:fadingEdgeLength="40dp"
+                        android:fadingEdgeLength="12dp"
                         android:fillViewport="true"
                         android:requiresFadingEdge="horizontal"
                         android:scrollbars="horizontal"
                         app:layout_constraintLeft_toRightOf="@id/home_team_fixed_player_table_layout"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toBottomOf="@id/home_team_name_logo_layout">
 
                         <TableLayout
                             android:id="@+id/home_team_scrollable_stats_table_layout"
