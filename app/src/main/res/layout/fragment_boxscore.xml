@@ -14,12 +14,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
         android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <!-- Away team box score layout -->
             <com.google.android.material.card.MaterialCardView
@@ -43,6 +43,7 @@
                         android:id="@+id/away_team_name_logo_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"
                         app:layout_constraintBottom_toTopOf="@id/away_team_fixed_player_table_layout"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -61,7 +62,7 @@
                             style="?attr/textAppearanceBodyLarge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="8dp"
                             android:text="@{viewModel.game.awayTeam.teamName}"
                             app:layout_constraintBottom_toBottomOf="@id/away_team_logo_image_view"
                             app:layout_constraintStart_toEndOf="@id/away_team_logo_image_view"
@@ -291,6 +292,7 @@
                         android:id="@+id/home_team_name_logo_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"
                         app:layout_constraintBottom_toTopOf="@id/home_team_fixed_player_table_layout"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -309,8 +311,8 @@
                             style="?attr/textAppearanceBodyLarge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@{viewModel.game.awayTeam.teamName}"
+                            android:layout_marginStart="8dp"
+                            android:text="@{viewModel.game.homeTeam.teamName}"
                             app:layout_constraintBottom_toBottomOf="@id/home_team_logo_image_view"
                             app:layout_constraintStart_toEndOf="@id/home_team_logo_image_view"
                             app:layout_constraintTop_toTopOf="@id/home_team_logo_image_view"

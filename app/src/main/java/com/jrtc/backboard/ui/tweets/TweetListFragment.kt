@@ -1,6 +1,5 @@
 package com.jrtc.backboard.ui.tweets
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

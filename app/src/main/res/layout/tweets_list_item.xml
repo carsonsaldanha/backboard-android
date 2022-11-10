@@ -23,19 +23,20 @@
         android:layout_margin="8dp"
         android:onClick="@{() -> clickListener.onClick(tweet)}">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/tweet_text_view"
+                style="?attr/textAppearanceBody2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?attr/textAppearanceBody1"
+                android:lineSpacingExtra="4sp"
                 android:text="@{tweet.data.title}"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Tweet Title" />
 
