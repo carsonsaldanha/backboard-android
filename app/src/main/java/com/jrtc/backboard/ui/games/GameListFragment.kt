@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.transition.MaterialElevationScale
 import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentGamesBinding
 
@@ -37,15 +40,38 @@ class GameListFragment : Fragment() {
         }
 
         // Inflates the recycler view
-        binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { game ->
-            viewModel.onGameClicked(game)
+        binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { cardView, game ->
             // Only displays the boxscore if the game has started or finished
             if (game.gameStatus != 1) {
-                findNavController().navigate(R.id.action_navigation_games_to_navigation_boxscore)
+                viewModel.onGameClicked(game)
+
+                // Applies transitions and navigates to the boxscore fragment
+                val gameCardDetailTransitionName =
+                    getString(R.string.game_card_detail_transition_name)
+                val extras = FragmentNavigatorExtras(cardView to gameCardDetailTransitionName)
+                findNavController().navigate(
+                    R.id.action_navigation_games_to_navigation_boxscore,
+                    null,
+                    null,
+                    extras
+                )
+                exitTransition = MaterialElevationScale(false).apply {
+                    duration = 300
+                }
+                reenterTransition = MaterialElevationScale(true).apply {
+                    duration = 300
+                }
             }
         })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Return transition from boxscore fragment
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
     }
 
 }

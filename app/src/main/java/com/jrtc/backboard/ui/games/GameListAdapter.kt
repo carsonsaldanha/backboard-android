@@ -2,6 +2,7 @@ package com.jrtc.backboard.ui.games
 
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -73,6 +74,6 @@ class GameListAdapter(private val clickListener: GameListener) :
 
 }
 
-class GameListener(val clickListener: (game: Game) -> Unit) {
-    fun onClick(game: Game) = clickListener(game)
+class GameListener(val clickListener: (cardView: View, game: Game) -> Unit) {
+    fun onClick(cardView: View, game: Game) = clickListener(cardView, game)
 }
