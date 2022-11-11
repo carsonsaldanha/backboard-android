@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.transition.MaterialElevationScale
 import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentGamesBinding
 
@@ -55,12 +54,6 @@ class GameListFragment : Fragment() {
                     null,
                     extras
                 )
-                exitTransition = MaterialElevationScale(false).apply {
-                    duration = 300
-                }
-                reenterTransition = MaterialElevationScale(true).apply {
-                    duration = 300
-                }
             }
         })
 
