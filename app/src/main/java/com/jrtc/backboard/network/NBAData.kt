@@ -1,6 +1,8 @@
 package com.jrtc.backboard.network
 
 import com.jrtc.backboard.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * This data class defines [TodaysGamesResponse] which includes the scoreboard.
@@ -131,4 +133,25 @@ fun getTeamDrawableLogo(teamId: Int): Int {
         1610612766 -> return R.drawable.logo_1610612766
     }
     return R.drawable.logo_nba
+}
+
+/**
+ * Returns a Date object for the given UTC string for parsing.
+ */
+fun String.toDate(
+    dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss'Z'",
+    timeZone: TimeZone = TimeZone.getTimeZone("UTC")
+): Date {
+    val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
+    parser.timeZone = timeZone
+    return parser.parse(this)!!
+}
+
+/**
+ * Returns a formatted string for the given Date object in the user's local time zone.
+ */
+fun Date.formatTo(dateFormat: String, timeZone: TimeZone = TimeZone.getDefault()): String {
+    val formatter = SimpleDateFormat(dateFormat, Locale.getDefault())
+    formatter.timeZone = timeZone
+    return formatter.format(this)
 }

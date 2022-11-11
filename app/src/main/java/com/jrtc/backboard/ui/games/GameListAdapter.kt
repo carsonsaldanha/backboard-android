@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jrtc.backboard.databinding.GamesListItemBinding
 import com.jrtc.backboard.network.Game
+import com.jrtc.backboard.network.formatTo
 import com.jrtc.backboard.network.getTeamDrawableLogo
+import com.jrtc.backboard.network.toDate
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -29,8 +31,12 @@ class GameListAdapter(private val clickListener: GameListener) :
             // Sets the team logos
             binding.awayTeamLogoImageView.setImageResource(getTeamDrawableLogo(game.awayTeam.teamId))
             binding.homeTeamLogoImageView.setImageResource(getTeamDrawableLogo(game.homeTeam.teamId))
-            // Only displays the score if the game has started or finished
-            if (game.gameStatus != 1) {
+
+            // Displays the game time in the user's current time zone and only displays the score
+            // if the game has started or finished
+            if (game.gameStatus == 1) {
+                binding.gameStatusTextView.text = game.gameTimeUTC.toDate().formatTo("h:mm a")
+            } else {
                 binding.awayTeamScoreTextView.text = game.awayTeam.score.toString()
                 binding.homeTeamScoreTextView.text = game.homeTeam.score.toString()
             }
