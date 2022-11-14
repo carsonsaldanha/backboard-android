@@ -1,12 +1,15 @@
 package com.jrtc.backboard.ui.highlights
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentHighlightsBinding
 import com.jrtc.backboard.network.StreamableApi
 import com.jrtc.backboard.network.StreamableResponse
@@ -32,6 +35,14 @@ class HighlightListFragment : Fragment() {
         val binding = FragmentHighlightsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        // Uses a two-column layout on larger devices (tablets) and when in landscape orientation
+        var gridSpanCount = resources.getInteger(R.integer.grid_span_count)
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            gridSpanCount = 2
+        }
+        val gridLayoutManager = GridLayoutManager(this.context, gridSpanCount)
+        binding.highlightsRecyclerView.layoutManager = gridLayoutManager
 
         // Calls the view model method that calls the Reddit api
         viewModel.getHighlightsList()
