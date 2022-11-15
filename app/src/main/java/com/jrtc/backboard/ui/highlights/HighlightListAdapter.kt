@@ -1,5 +1,7 @@
 package com.jrtc.backboard.ui.highlights
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -49,6 +51,14 @@ class HighlightListAdapter(private val clickListener: HighlightListener) :
     override fun onBindViewHolder(holder: HighlightViewHolder, position: Int) {
         val highlight = getItem(position)
         holder.bind(clickListener, highlight)
+        // Sets the card to open the Reddit post on long press
+        holder.binding.highlightCardView.setOnLongClickListener {
+            val postUrl = "https://www.reddit.com${highlight.data.permalink}"
+            val queryUrl: Uri = Uri.parse(postUrl)
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            holder.itemView.context.startActivity(intent)
+            true
+        }
     }
 
 }

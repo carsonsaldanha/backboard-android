@@ -46,11 +46,19 @@ class TweetListAdapter(private val clickListener: TweetListener) :
     override fun onBindViewHolder(holder: TweetViewHolder, position: Int) {
         val tweet = getItem(position)
         holder.bind(clickListener, tweet)
-        // Sets the card to open the tweet link
+        // Sets the card to open the tweet link on single press
         holder.binding.tweetCardView.setOnClickListener {
             val queryUrl: Uri = Uri.parse(tweet.data.url)
             val intent = Intent(Intent.ACTION_VIEW, queryUrl)
             holder.itemView.context.startActivity(intent)
+        }
+        // Sets the card to open the Reddit post on long press
+        holder.binding.tweetCardView.setOnLongClickListener {
+            val postUrl = "https://www.reddit.com${tweet.data.permalink}"
+            val queryUrl: Uri = Uri.parse(postUrl)
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            holder.itemView.context.startActivity(intent)
+            true
         }
     }
 

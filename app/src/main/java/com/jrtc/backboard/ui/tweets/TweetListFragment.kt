@@ -28,7 +28,7 @@ class TweetListFragment : Fragment() {
 
         // Uses a two-column layout on larger devices (tablets) and when in landscape orientation
         val gridSpanCount = resources.getInteger(R.integer.grid_span_count)
-        val gridLayoutManager = GridLayoutManager(this.context, gridSpanCount)
+        val gridLayoutManager = GridLayoutManager(context, gridSpanCount)
         binding.tweetsRecyclerView.layoutManager = gridLayoutManager
 
         // Calls the view model method that calls the Reddit api

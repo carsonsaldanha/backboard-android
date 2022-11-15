@@ -28,13 +28,14 @@ data class Post(
 )
 
 /**
- * This data class defines [PostData] which includes the title of a Reddit post and url.
+ * This data class defines [PostData] which includes the title of a Reddit post, media, and url.
  * The property names of this data class are used by Moshi to match the names of values in JSON.
  */
 data class PostData(
     val title: String,
     @Json(name = "secure_media")
     val media: Media?,
+    val permalink: String,
     val url: String
 )
 
