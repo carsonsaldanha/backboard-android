@@ -40,14 +40,16 @@ class GameListAdapter(private val clickListener: GameListener) :
                 binding.awayTeamScoreTextView.text = game.awayTeam.score.toString()
                 binding.homeTeamScoreTextView.text = game.homeTeam.score.toString()
             }
-            // Updates the score text styling for a finished game
+            // Updates the score text styling and displays the win symbol for a finished game
             if (game.gameStatus == 3) {
                 val textColor: ColorStateList = binding.gameStatusTextView.textColors
                 // Checks whether away or home team won
                 if (game.awayTeam.score > game.homeTeam.score) {
                     binding.homeTeamScoreTextView.setTextColor(textColor)
+                    binding.awayTeamWinSymbolLayout.visibility = View.VISIBLE
                 } else {
                     binding.awayTeamScoreTextView.setTextColor(textColor)
+                    binding.homeTeamWinSymbolLayout.visibility = View.VISIBLE
                 }
             }
         }
