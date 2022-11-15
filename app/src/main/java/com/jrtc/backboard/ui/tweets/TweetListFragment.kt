@@ -1,6 +1,5 @@
 package com.jrtc.backboard.ui.tweets
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +27,7 @@ class TweetListFragment : Fragment() {
         binding.viewModel = viewModel
 
         // Uses a two-column layout on larger devices (tablets) and when in landscape orientation
-        var gridSpanCount = resources.getInteger(R.integer.grid_span_count)
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            gridSpanCount = 2
-        }
+        val gridSpanCount = resources.getInteger(R.integer.grid_span_count)
         val gridLayoutManager = GridLayoutManager(this.context, gridSpanCount)
         binding.tweetsRecyclerView.layoutManager = gridLayoutManager
 
