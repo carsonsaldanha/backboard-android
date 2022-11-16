@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.jrtc.backboard.R
 import com.jrtc.backboard.databinding.FragmentGamesBinding
 
 /**
@@ -30,7 +29,7 @@ class GameListFragment : Fragment() {
         binding.viewModel = viewModel
 
         // Uses a two-column layout on larger devices (tablets) and when in landscape orientation
-        val gridSpanCount = resources.getInteger(R.integer.grid_span_count)
+        val gridSpanCount = resources.getInteger(com.jrtc.backboard.R.integer.grid_span_count)
         val gridLayoutManager = GridLayoutManager(context, gridSpanCount)
         binding.gamesRecyclerView.layoutManager = gridLayoutManager
 
@@ -44,6 +43,11 @@ class GameListFragment : Fragment() {
             }
         }
 
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getGamesList()
+            binding.swipeRefresh.isRefreshing = false
+        }
+
         // Inflates the recycler view
         binding.gamesRecyclerView.adapter = GameListAdapter(GameListener { cardView, game ->
             // Only displays the boxscore if the game has started or finished
@@ -52,10 +56,10 @@ class GameListFragment : Fragment() {
 
                 // Applies transitions and navigates to the boxscore fragment
                 val gameCardDetailTransitionName =
-                    getString(R.string.game_card_detail_transition_name)
+                    getString(com.jrtc.backboard.R.string.game_card_detail_transition_name)
                 val extras = FragmentNavigatorExtras(cardView to gameCardDetailTransitionName)
                 findNavController().navigate(
-                    R.id.action_navigation_games_to_navigation_boxscore,
+                    com.jrtc.backboard.R.id.action_navigation_games_to_navigation_boxscore,
                     null,
                     null,
                     extras
