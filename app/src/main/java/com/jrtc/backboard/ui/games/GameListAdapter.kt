@@ -37,11 +37,15 @@ class GameListAdapter(private val clickListener: GameListener) :
             if (game.gameStatus == 1) {
                 binding.gameStatusTextView.text = game.gameTimeUTC.toDate().formatTo("h:mm a")
             } else {
+                // Splits the quarter and time on separate lines
+                binding.gameStatusTextView.text = game.gameStatusText.replace(" ", "\n")
                 binding.awayTeamScoreTextView.text = game.awayTeam.score.toString()
                 binding.homeTeamScoreTextView.text = game.homeTeam.score.toString()
             }
             // Updates the score text styling and displays the win symbol for a finished game
             if (game.gameStatus == 3) {
+                // Fix for the occasional bug in the API that adds a lot of spaces to "Final" text
+                binding.gameStatusTextView.text = game.gameStatusText.replace(" ", "")
                 val textColor: ColorStateList = binding.gameStatusTextView.textColors
                 // Checks whether away or home team won
                 if (game.awayTeam.score > game.homeTeam.score) {

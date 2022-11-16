@@ -43,6 +43,7 @@ class GameListFragment : Fragment() {
             }
         }
 
+        // Refreshes the games list if pulled to refresh
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getGamesList()
             binding.swipeRefresh.isRefreshing = false

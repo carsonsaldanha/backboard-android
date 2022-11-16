@@ -2,7 +2,10 @@ package com.jrtc.backboard.ui.highlights
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import com.jrtc.backboard.databinding.ActivityVideoBinding
@@ -23,6 +26,13 @@ class VideoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        // Edge to edge content and insets
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(bottom = insets.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
     }
 
     override fun onStart() {
@@ -32,7 +42,6 @@ class VideoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         if (player == null) {
             initializePlayer()
         }
