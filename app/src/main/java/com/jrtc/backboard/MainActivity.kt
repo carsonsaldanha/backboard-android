@@ -1,6 +1,9 @@
 package com.jrtc.backboard
 
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.OrientationEventListener
+import android.view.Surface
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private var cutoutDepth = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            cutoutDepth = insets.top
             view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = insets.top
             }
@@ -49,6 +54,49 @@ class MainActivity : AppCompatActivity() {
             }
         }
         bottomNavigationView.setupWithNavController(navController)
+    }
+
+    /**
+     * Listens for orientation change and updates the padding for the display cutout.
+     */
+    private val orientationListener by lazy {
+        object : OrientationEventListener(applicationContext, SensorManager.SENSOR_DELAY_NORMAL) {
+            override fun onOrientationChanged(orientation: Int) {
+                if (orientation == ORIENTATION_UNKNOWN)
+                    return
+                when (display?.rotation) {
+                    Surface.ROTATION_0 -> {
+                        // Bottom - reset the padding in portrait
+                        binding.navHostFragmentActivityMain.setPadding(0, 0, 0, 0)
+                    }
+                    Surface.ROTATION_90 -> {
+                        // Left
+                        binding.navHostFragmentActivityMain.setPadding(cutoutDepth, 0, 0, 0)
+                    }
+                    Surface.ROTATION_180 -> {
+                        // Top - reset the padding if upside down
+                        binding.navHostFragmentActivityMain.setPadding(0, 0, 0, 0)
+                    }
+                    Surface.ROTATION_270 -> {
+                        // Right
+                        binding.navHostFragmentActivityMain.setPadding(0, 0, cutoutDepth, 0)
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Starts the orientation listener
+        if (orientationListener.canDetectOrientation())
+            orientationListener.enable()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Stops the orientation listener
+        orientationListener.disable()
     }
 
 }
