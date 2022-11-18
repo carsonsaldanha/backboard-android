@@ -1,0 +1,3 @@
+-keep,allowobfuscation class com.jrtc.backboard.ui.games.GameViewModel { *; }
+-keep,allowobfuscation class com.jrtc.backboard.ui.tweets.TweetViewModel { *; }
+-keep,allowobfuscation class com.jrtc.backboard.ui.highlights.HighlightViewModel { *; }
