@@ -12,16 +12,8 @@ android {
         applicationId "com.jrtc.backboard"
         minSdk 30
         targetSdk 33
-        versionCode 5
-        versionName "5.0"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+        versionCode 6
+        versionName "6.0"
     }
 
     compileOptions {
@@ -50,7 +42,6 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.media3:media3-exoplayer:1.0.0-beta02'
     implementation 'androidx.media3:media3-ui:1.0.0-beta02'
-    implementation 'androidx.media3:media3-exoplayer-dash:1.0.0-beta02'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
