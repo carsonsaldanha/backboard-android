@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_tweets_red_24dp"
+        android:shortcutDisabledMessage="@string/tweets_disabled_message"
+        android:shortcutId="tweets_shortcut"
+        android:shortcutLongLabel="@string/tweets_shortcut_label"
+        android:shortcutShortLabel="@string/tweets_shortcut_label">
+        <intent
+            android:action="com.jrtc.backboard.TWEETS"
+            android:targetClass="com.jrtc.backboard.MainActivity"
+            android:targetPackage="com.jrtc.backboard" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_highlights_red_24dp"
+        android:shortcutDisabledMessage="@string/highlights_disabled_message"
+        android:shortcutId="highlights_shortcut"
+        android:shortcutLongLabel="@string/highlights_shortcut_label"
+        android:shortcutShortLabel="@string/highlights_shortcut_label">
+        <intent
+            android:action="com.jrtc.backboard.HIGHLIGHTS"
+            android:targetClass="com.jrtc.backboard.MainActivity"
+            android:targetPackage="com.jrtc.backboard" />
+    </shortcut>
+
+</shortcuts>

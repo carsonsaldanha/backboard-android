@@ -11,6 +11,7 @@ import androidx.core.view.*
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jrtc.backboard.databinding.ActivityMainBinding
@@ -54,6 +55,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
         bottomNavigationView.setupWithNavController(navController)
+
+        // App shortcuts navigation
+        if ("com.jrtc.backboard.TWEETS" == intent.action) {
+            navHostFragment.findNavController().navigate(R.id.navigation_tweets)
+        } else if ("com.jrtc.backboard.HIGHLIGHTS" == intent.action) {
+            navHostFragment.findNavController().navigate(R.id.navigation_highlights)
+        }
     }
 
     /**

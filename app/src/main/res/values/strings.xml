@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Text -->
     <string name="app_name">Backboard</string>
     <string name="title_games">Games</string>
     <string name="title_tweets">Tweets</string>
@@ -32,8 +31,10 @@
     <string name="no_games_scheduled">No games scheduled</string>
     <string name="away_team_won">Away team won</string>
     <string name="home_team_won">Home team won</string>
-
-    <!-- Transitions -->
+    <string name="tweets_shortcut_label">Tweets</string>
+    <string name="tweets_disabled_message">Tweets tab disabled</string>
+    <string name="highlights_shortcut_label">Highlights</string>
+    <string name="highlights_disabled_message">Highlights tab disabled</string>
     <string name="game_card_transition_name">game_card_%1$s</string>
     <string name="game_card_detail_transition_name">game_card_detail</string>
 
