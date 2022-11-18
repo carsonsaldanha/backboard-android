@@ -1,3 +1,7 @@
--keep,allowobfuscation class com.jrtc.backboard.ui.games.GameViewModel { *; }
--keep,allowobfuscation class com.jrtc.backboard.ui.tweets.TweetViewModel { *; }
--keep,allowobfuscation class com.jrtc.backboard.ui.highlights.HighlightViewModel { *; }
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
+    <init>();
+}
+
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.AndroidViewModel {
+    <init>(android.app.Application);
+}
