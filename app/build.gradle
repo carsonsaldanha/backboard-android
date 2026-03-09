@@ -1,9 +1,6 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.kapt'
+    id 'com.android.legacy-kapt' version '9.1.0'
 }
 
 android {
@@ -14,39 +11,38 @@ android {
         applicationId 'com.jrtc.backboard'
         minSdk 30
         targetSdk 36
-        versionCode 8
-        versionName '8.0'
+        versionCode 9
+        versionName '9.0'
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_1_8
-        }
+        jvmToolchain(17)
     }
 
     buildFeatures {
         dataBinding true
         viewBinding true
     }
+    compileSdkMinor 1
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.core:core-ktx:1.17.0'
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.2'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.9.2'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'androidx.media3:media3-exoplayer:1.7.1'
-    implementation 'androidx.media3:media3-ui:1.7.1'
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.10.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.7'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.9.7'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0'
+    implementation 'androidx.media3:media3-exoplayer:1.9.2'
+    implementation 'androidx.media3:media3-ui:1.9.2'
+    implementation 'com.google.android.material:material:1.13.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.15.2'
     implementation 'com.squareup.retrofit2:converter-moshi:3.0.0'
     //noinspection NewerVersionAvailable
