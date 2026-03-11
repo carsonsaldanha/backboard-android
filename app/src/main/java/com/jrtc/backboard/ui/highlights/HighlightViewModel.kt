@@ -26,9 +26,6 @@ class HighlightViewModel : ViewModel() {
     // The internal MutableLiveData that stores a single highlight
     private val _highlight = MutableLiveData<Post>()
 
-    // The external immutable LiveData for a single highlight
-    val highlight: LiveData<Post> = _highlight
-
     /**
      * Gets NBA highlights from the Reddit api Retrofit service and updates the
      * [Post] [List] [LiveData] highlights.
@@ -54,7 +51,7 @@ class HighlightViewModel : ViewModel() {
     }
 
     /**
-     * Sets [Post] [LiveData] highlight to the passed in tweet to play a highlight when a list item
+     * Sets [Post] [LiveData] highlight to the passed in post to play a highlight when a list item
      * is clicked.
      */
     fun onHighlightClicked(post: Post) {

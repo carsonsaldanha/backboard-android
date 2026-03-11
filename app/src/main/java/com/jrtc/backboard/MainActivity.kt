@@ -11,7 +11,6 @@ import androidx.core.view.*
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jrtc.backboard.databinding.ActivityMainBinding
@@ -46,9 +45,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         // Hides the bottom navigation bar on unspecified fragments
         navController.addOnDestinationChangedListener { _, navDest: NavDestination, _ ->
-            if (navDest.id == R.id.navigation_games || navDest.id == R.id.navigation_tweets
-                || navDest.id == R.id.navigation_highlights
-            ) {
+            if (navDest.id == R.id.navigation_games || navDest.id == R.id.navigation_highlights) {
                 bottomNavigationView.visibility = View.VISIBLE
             } else {
                 bottomNavigationView.visibility = View.GONE
@@ -57,10 +54,8 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         // App shortcuts navigation
-        if ("com.jrtc.backboard.TWEETS" == intent.action) {
-            navHostFragment.findNavController().navigate(R.id.navigation_tweets)
-        } else if ("com.jrtc.backboard.HIGHLIGHTS" == intent.action) {
-            navHostFragment.findNavController().navigate(R.id.navigation_highlights)
+        if ("com.jrtc.backboard.HIGHLIGHTS" == intent.action) {
+            navController.navigate(R.id.navigation_highlights)
         }
     }
 

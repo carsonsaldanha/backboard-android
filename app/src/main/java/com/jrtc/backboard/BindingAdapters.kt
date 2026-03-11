@@ -12,7 +12,6 @@ import com.jrtc.backboard.network.Player
 import com.jrtc.backboard.network.Post
 import com.jrtc.backboard.ui.games.GameListAdapter
 import com.jrtc.backboard.ui.highlights.HighlightListAdapter
-import com.jrtc.backboard.ui.tweets.TweetListAdapter
 import java.text.DecimalFormat
 
 /**
@@ -21,15 +20,6 @@ import java.text.DecimalFormat
 @BindingAdapter("gamesListData")
 fun bindGamesRecyclerView(recyclerView: RecyclerView, data: List<Game>?) {
     val adapter = recyclerView.adapter as GameListAdapter
-    adapter.submitList(data)
-}
-
-/**
- * Updates the data shown in the tweets [RecyclerView].
- */
-@BindingAdapter("tweetsListData")
-fun bindTweetsRecyclerView(recyclerView: RecyclerView, data: List<Post>?) {
-    val adapter = recyclerView.adapter as TweetListAdapter
     adapter.submitList(data)
 }
 

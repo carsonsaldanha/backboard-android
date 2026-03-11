@@ -8,12 +8,6 @@
         android:title="@string/title_games" />
 
     <item
-        android:id="@+id/navigation_tweets"
-        android:enabled="true"
-        android:icon="@drawable/ic_selector_tweets"
-        android:title="@string/title_tweets" />
-
-    <item
         android:id="@+id/navigation_highlights"
         android:enabled="true"
         android:icon="@drawable/ic_selector_highlights"

@@ -24,12 +24,6 @@
         tools:layout="@layout/fragment_boxscore" />
 
     <fragment
-        android:id="@+id/navigation_tweets"
-        android:name="com.jrtc.backboard.ui.tweets.TweetListFragment"
-        android:label="@string/title_tweets"
-        tools:layout="@layout/fragment_tweets" />
-
-    <fragment
         android:id="@+id/navigation_highlights"
         android:name="com.jrtc.backboard.ui.highlights.HighlightListFragment"
         android:label="@string/title_highlights"

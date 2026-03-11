@@ -21,17 +21,9 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 /**
- * A public interface that exposes the [getNBATweets] and [getNBAHighlights] methods.
+ * A public interface that exposes the [getNBAHighlights] method.
  */
 interface RedditApiService {
-    /**
-     * Returns a [Call] of [RedditResponse] and this method can be called from a Coroutine.
-     * The @GET annotation indicates that the specified endpoint will be requested with the GET
-     * HTTP method.
-     */
-    @GET("search/.json?q=subreddit%3Anba%20site%3Atwitter.com&sort=hot")
-    fun getNBATweets(): Call<RedditResponse>
-
     /**
      * Returns a [Call] of [RedditResponse] and this method can be called from a Coroutine.
      * The @GET annotation indicates that the specified endpoint will be requested with the GET

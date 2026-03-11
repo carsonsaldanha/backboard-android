@@ -4,7 +4,7 @@ A basketball Android app.
 Backboard is a fully native Android app with the following features:
 * Live scores for the day
 * Detailed box score stats
-* Top rated tweets and highlight videos pulled from r/nba
+* Top rated highlight videos pulled from r/nba
 * Light and dark themes
 * Material You dynamic color
 * Tablet and Chromebook optimized
